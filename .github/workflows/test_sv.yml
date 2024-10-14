@@ -66,15 +66,14 @@ jobs:
     - name: Compare status variables
       if: failure()
       run: |
-       cp ../reqs_${{ matrix.python-version }}.txt failed_reqs.txt
-       python compare_pip_freeze.py failed_reqs.txt reqs_${{ matrix.python-version }}.txt pip_freeze_diff_${{ matrix.python-version }}.txt
+       python compare_status_vars.py 
 
-    - name: Upload pip freeze diff
+    - name: Upload status vars diff
       if: failure()
       uses: actions/upload-artifact@v4
       with:
-        name: pip-freeze-diff-${{ matrix.python-version }}
-        path: pip_freeze_diff_${{ matrix.python-version }}.txt
+        name: status_vars_diff
+        path: status_vars_diff.txt
 
     - name: send email in case of failure
       if: failure()
