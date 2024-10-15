@@ -5,9 +5,9 @@ name: Testing
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "official" , "testing_framework"]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "official" ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
