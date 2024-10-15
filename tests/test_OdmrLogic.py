@@ -145,7 +145,7 @@ def coverage_for_each_test(request):
     print(f"Coverage report saved to {test_dir}")
 
 
-def test_start_odmr_scan(module, qtbot):
+def test_start_odmr_scan(module):
     """
     Tests if the scan parameters are correctly generated and if the signal data is generated for the given runtime
     with appropriate values.
