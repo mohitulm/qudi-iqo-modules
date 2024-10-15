@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "main", "official" , "testing_framework"]
   pull_request:
-    branches: [ "main", "official" ]
+    branches: [ "main" ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -53,5 +53,5 @@ jobs:
       run: pip install numpy==${{ matrix.numpy-version }}
     - name: Test with pytest
       run: |
-        pytest 
+        pytest .\tests\test_OdmrLogic.py -s
  

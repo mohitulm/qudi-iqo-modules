@@ -124,8 +124,8 @@ def get_logic_module_instance(remote_instance):
     logic_instance = module_manager._modules[odmr_logic].instance
     return logic_instance
 
-#@pytest.fixture(autouse=True)
-#Uncomment the above line to enable the coverage fixture
+'''
+@pytest.fixture(autouse=True)
 def coverage_for_each_test(request):
     """
     Generate and save coverage report.
@@ -143,7 +143,7 @@ def coverage_for_each_test(request):
     cov.html_report(directory=test_dir)
     cov.save()
     print(f"Coverage report saved to {test_dir}")
-
+'''
 
 def test_start_odmr_scan(remote_instance):
     """
