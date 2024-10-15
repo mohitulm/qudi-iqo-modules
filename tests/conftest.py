@@ -123,9 +123,8 @@ def start_qudi_process():
     """
     qudi_process = multiprocessing.Process(target=run_qudi)
     qudi_process.start()
-    time.sleep(5)
     yield
-    qudi_process.join()
+    qudi_process.join(timeout=5)
     if qudi_process.is_alive():
         qudi_process.terminate()
 
