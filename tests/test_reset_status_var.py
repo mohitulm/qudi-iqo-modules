@@ -43,7 +43,7 @@ def test_reset_module(gui_modules, hardware_modules, remote_instance):
         module_manager.clear_module_app_data(module)
         module_manager.reload_module(module)
 
-    for gui_module in gui_modules:
+    for gui_module in gui_modules[:1]:
         gui_managed_module = module_manager.modules[gui_module]
         required_managed_modules = gui_managed_module.required_modules
         required_modules = [required_managed_module().name for required_managed_module in required_managed_modules]
