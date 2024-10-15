@@ -125,7 +125,7 @@ def start_qudi_process():
     qudi_process.start()
     time.sleep(5)
     yield
-    qudi_process.join(timeout=30)
+    qudi_process.join()
     if qudi_process.is_alive():
         qudi_process.terminate()
 
