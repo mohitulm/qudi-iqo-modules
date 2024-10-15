@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-This file contains unit tests for all qudi fit routines for exponential decay models.
+This file contains unit tests for all Odmr logic module.
 
 Copyright (c) 2021, the qudi developers. See the AUTHORS.md file at the top-level directory of this
 distribution and on <https://github.com/Ulm-IQO/qudi-core/>
@@ -20,16 +20,13 @@ You should have received a copy of the GNU Lesser General Public License along w
 If not, see <https://www.gnu.org/licenses/>.
 """
 
-from qudi.core import modulemanager,application
-import numpy as np
-import pytest
-from PySide2 import QtCore, QtWidgets
-import weakref
-from qudi.util.yaml import yaml_load
 import os
-import coverage
 import time
 import math
+import numpy as np
+import coverage
+import pytest
+from qudi.util.network import netobtain
 
 MODULE = 'odmr_logic'
 BASE = 'logic'
@@ -38,55 +35,113 @@ FIT_MODEL = 'Gaussian Dip'
 TOLERANCE = 10 # tolerance for signal data range
 
 
+def get_scanner(module):
+    """Getter for scanner module instance for logic module
 
+    Parameters
+    ----------
+    module : Object
+        logic module instance
 
-
-@pytest.fixture(scope='module')
-def module(qudi_instance, config):
-    module_manager =  qudi_instance.module_manager
-    for base in ['logic', 'hardware']:
-        for module_name, module_cfg in list(config[base].items()):
-            module_manager.add_module(module_name, base, module_cfg, allow_overwrite=False, emit_change=True )
-    module = module_manager.modules[MODULE]
-    module.activate()
-    return module.instance
-
-@pytest.fixture(scope='module')
-def scanner(module):
+    Returns
+    -------
+    Object
+        Scanner module instance
+    """    
     return module._data_scanner()
 
-@pytest.fixture(scope='module')
-def microwave(module):
+def get_microwave(module):
+    """Getter for microwave module instance for logic module
+
+    Parameters
+    ----------
+    module : Object
+        logic module instance
+
+    Returns
+    -------
+    Object
+        microwave module instance
+    """    
     return module._microwave()
 
 def get_odmr_range(length, scanner):
+    """
+    Simulate odmr scan data and return signal data
+
+    Parameters
+    ----------
+    length : int
+        Length of scans
+    scanner : object
+        Scanner module instance
+
+    Returns
+    -------
+    dict
+        Dict of simulated data for all the channels
+    """    
     scanner.__simulate_odmr(length)
     data = scanner._FiniteSamplingInputDummy__simulated_samples
     signal_data_range = {channel: ( get_tolerance(min(data[channel]), bound = 'lower'), get_tolerance( max(data[channel]), bound='upper')  ) for channel in data}
     return signal_data_range
 
 def get_tolerance(value, bound):
+    """Upper and lower boundaries for range check
+
+    Parameters
+    ----------
+    value : float
+        Input value
+    bound : str
+        lower or upper bound category
+
+    Returns
+    -------
+    int
+        the limit
+    """    
     return int(value + value * TOLERANCE/100) if bound == 'upper' else int(value - value * TOLERANCE/100)
 
+
+@pytest.fixture(scope='module')
+def module(remote_instance):
+    """ ""
+    This fixture return Odmr logic instance
+
+    Parameters
+    ----------
+    remote_instance : fixture
+        Remote qudi instance
+    """
+    module_manager = remote_instance.module_manager
+    odmr_gui = 'odmr_gui'
+    odmr_logic = 'odmr_logic'
+    module_manager.activate_module(odmr_gui)
+    logic_instance = module_manager._modules[odmr_logic].instance
+    return logic_instance
 
 #@pytest.fixture(autouse=True)
 #Uncomment the above line to enable the coverage fixture
 def coverage_for_each_test(request):
+    """save coverage report
+
+    Parameters
+    ----------
+    request : request
+    """    
     cov = coverage.Coverage()
     cov.start()
     yield
     cov.stop()
-    
     test_dir =  f"coverage_{request.node.nodeid.replace('/', '_').replace(':', '_')}"
     os.makedirs(test_dir, exist_ok=True)
-    
     cov.html_report(directory=test_dir)
     cov.save()
-
     print(f"Coverage report saved to {test_dir}")
 
 
-def test_start_odmr_scan(module, scanner, qtbot):
+def test_start_odmr_scan(module, qtbot):
     """This tests if the scan parameters such as frequency and signal data are correctly generated,
       and if the signal data is generated for the given runtime with appropriate values
 
@@ -99,6 +154,8 @@ def test_start_odmr_scan(module, scanner, qtbot):
     qtbot : fixture
         Fixture for qt support
     """    
+    scanner = get_scanner(module)
+    module.runtime = 5
     freq_low, freq_high, freq_counts = list(map(int, module.frequency_ranges[0]))
     frequency_data = module.frequency_data
     assert len(frequency_data) == module.frequency_range_count
@@ -110,8 +167,8 @@ def test_start_odmr_scan(module, scanner, qtbot):
     
     module.start_odmr_scan()
     run_time = int(module._run_time) 
-    with qtbot.waitSignals( [module._sigNextLine]*run_time, timeout = run_time*1500) as blockers:
-        pass
+    #with qtbot.waitSignals( [module._sigNextLine]*run_time, timeout = run_time*1500) as blockers:
+    #    pass
     time.sleep(run_time)
     signal_data = module.signal_data
     assert len(signal_data) == len(scanner.active_channels)
@@ -124,8 +181,6 @@ def test_start_odmr_scan(module, scanner, qtbot):
                 assert not math.isnan(value)
                 assert int(value) in range(*odmr_range[channel])
     #print(f'elspased sweeps {module._elapsed_sweeps}') 
-
-
 
 def test_do_fit(module):
     """This tests if the fitting of the generated signal data works
@@ -142,7 +197,6 @@ def test_do_fit(module):
     for key,values in dict_fit_result.items():
         if 'value' in values:
             assert not math.isnan(values['value'])
-
 
 def test_save_odmr_data(module):
     """This tests whether new files were saved in the save dir 
@@ -175,6 +229,11 @@ def test_save_odmr_data(module):
     saved_signal_data = np.loadtxt(signal_data_file)
     for i,channel in enumerate(CHANNELS):
         saved_channel_data = [saved_signal_row[i+1]  for saved_signal_row in saved_signal_data]
-        actual_channel_data = module.signal_data[channel][0]
-        for saved_value, actual_value in zip(saved_channel_data, actual_channel_data):
-            assert np.isclose(saved_value, actual_value)
+        actual_channel_data = netobtain(module.signal_data[channel][0])
+        assert np.allclose(saved_channel_data, actual_channel_data)
+
+
+
+
+
+

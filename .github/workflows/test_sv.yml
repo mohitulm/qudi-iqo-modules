@@ -56,7 +56,7 @@ jobs:
 
     - name: Test with pytest
       run: |
-        pytest  tests/test_modify_status_var_file.py -s
+        pytest  tests/test_run_modules.py -s
 
     - name: Switch to test branch
       run: |
@@ -64,7 +64,7 @@ jobs:
 
  
     - name: Compare status variables
-      if: failure()
+      if: always()
       run: |
        python compare_status_vars.py 
 
@@ -78,8 +78,12 @@ jobs:
     - name: send email in case of failure
       if: failure()
       run: |
-        python failure_email.py -p ${{ matrix.python-version }} -d pip_freeze_diff_${{ matrix.python-version }}.txt
+        python failure_sv_email.py -f 
 
+    - name: send email in case of changes
+      if: always()
+      run: |
+        python failure_sv_email.py 
 
     - name: Configure git
       run: |
@@ -89,9 +93,9 @@ jobs:
     - name: Pip freeze on test success and commit latest deps
       if: success()
       run: |
-        cp ../reqs_${{ matrix.python-version }}.txt .
-        git add reqs_${{ matrix.python-version }}.txt
-        git commit -m "updated reqs.txt to latest successful run"
+        python update_saved_svs.py
+        git add *
+        git commit -m "updated saved sv to latest successful run"
         git pull --rebase
         git push --force-with-lease origin HEAD:workflow
       env:
