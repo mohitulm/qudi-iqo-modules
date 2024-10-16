@@ -27,11 +27,66 @@ import numpy as np
 import coverage
 import pytest
 
+import multiprocessing
+import rpyc
+from PySide2 import QtWidgets
+from PySide2.QtCore import QTimer
+from qudi.core import application
+from qudi.util.yaml import yaml_load
+
 MODULE = 'odmr_logic'
 BASE = 'logic'
 CHANNELS = ('APD counts', 'Photodiode')
 FIT_MODEL = 'Gaussian Dip'
 TOLERANCE = 10 # tolerance for signal data range
+CONFIG = os.path.join(os.getcwd(),'tests/test.cfg')
+
+
+def run_qudi(timeout=150000):
+    """
+    Runs a Qudi instance with a timer.
+
+    Parameters
+    ----------
+    timeout : int, optional
+        timeout for the Qudi session in milliseconds, by default 150000.
+    """
+    app_cls = QtWidgets.QApplication
+    app = app_cls.instance()
+    if app is None:
+        app = app_cls()
+    qudi_instance = application.Qudi.instance()
+    if qudi_instance is None:
+        qudi_instance = application.Qudi(config_file=CONFIG)
+    QTimer.singleShot(timeout, qudi_instance.quit)
+    qudi_instance.run()
+
+
+@pytest.fixture(scope='module')
+def start_qudi_process():
+    """
+    Fixture that starts the Qudi process and ensures it's running before returning.
+    """
+    qudi_process = multiprocessing.Process(target=run_qudi)
+    qudi_process.start()
+    print('started qudi')
+    yield
+    qudi_process.join(timeout=5)
+    if qudi_process.is_alive():
+        qudi_process.terminate()
+
+@pytest.fixture(scope='module')
+def remote_instance(start_qudi_process):
+    """
+    Fixture that connects to the running Qudi ipython kernel through rpyc client and returns the client instance.
+    """
+    time.sleep(5)
+    print('attempting connection')
+    conn = rpyc.connect("localhost", 18861, config={'sync_request_timeout': 60})
+    root = conn.root
+    print('established connection ',root)
+    qudi_instance = root._qudi
+    return qudi_instance
 
 
 def get_scanner(logic_instance):
@@ -187,7 +242,7 @@ def test_start_odmr_scan(remote_instance):
                 assert int(value) in range(*odmr_range[channel])
     #print(f'elspased sweeps {logic_instance._elapsed_sweeps}') 
 
-'''
+
 
 def test_do_fit(remote_instance):
     """
@@ -243,4 +298,3 @@ def test_save_odmr_data(remote_instance):
         saved_channel_data = [saved_signal_row[i+1]  for saved_signal_row in saved_signal_data]
         actual_channel_data = netobtain(logic_instance.signal_data[channel][0])
         assert np.allclose(saved_channel_data, actual_channel_data)
-'''
