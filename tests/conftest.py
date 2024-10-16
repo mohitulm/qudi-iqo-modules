@@ -96,6 +96,7 @@ def hardware_modules(config):
     modules = list(config[base].keys())
     return modules
 
+'''
 def run_qudi(timeout=150000):
     """
     Runs a Qudi instance with a timer.
@@ -141,3 +142,4 @@ def remote_instance(start_qudi_process):
     print('established connection ',root)
     qudi_instance = root._qudi
     return qudi_instance
+'''

@@ -26,13 +26,11 @@ import math
 import numpy as np
 import coverage
 import pytest
-
 import multiprocessing
 import rpyc
 from PySide2 import QtWidgets
 from PySide2.QtCore import QTimer
 from qudi.core import application
-from qudi.util.yaml import yaml_load
 
 MODULE = 'odmr_logic'
 BASE = 'logic'
