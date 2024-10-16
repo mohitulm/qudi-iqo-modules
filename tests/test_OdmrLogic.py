@@ -58,7 +58,7 @@ def run_qudi(timeout=150000):
     qudi_instance = application.Qudi.instance()
     if qudi_instance is None:
         qudi_instance = application.Qudi(config_file=CONFIG)
-    QTimer.singleShot(150000, qudi_instance.quit)
+    QTimer.singleShot(timeout, qudi_instance.quit)
     qudi_instance.run()
 
 
@@ -71,7 +71,6 @@ def start_qudi_process():
     qudi_process.start()
     print('started qudi')
     time.sleep(10)
-
     yield
     qudi_process.join(timeout=10)
     if qudi_process.is_alive():
