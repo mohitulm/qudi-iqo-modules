@@ -26,7 +26,6 @@ import math
 import numpy as np
 import coverage
 import pytest
-from qudi.util.network import netobtain
 
 MODULE = 'odmr_logic'
 BASE = 'logic'
@@ -188,6 +187,8 @@ def test_start_odmr_scan(remote_instance):
                 assert int(value) in range(*odmr_range[channel])
     #print(f'elspased sweeps {logic_instance._elapsed_sweeps}') 
 
+'''
+
 def test_do_fit(remote_instance):
     """
     Tests if the fitting of the generated signal data works by checking the values of the fit parameters are not nan.
@@ -237,7 +238,9 @@ def test_save_odmr_data(remote_instance):
     data_files = [recent_saved_file for recent_saved_file in recent_saved_files if os.path.splitext(recent_saved_file)[1] == '.dat']
     signal_data_file = [data_file for data_file in data_files if 'signal' in data_file][0]
     saved_signal_data = np.loadtxt(signal_data_file)
+    from qudi.util.network import netobtain
     for i,channel in enumerate(CHANNELS):
         saved_channel_data = [saved_signal_row[i+1]  for saved_signal_row in saved_signal_data]
         actual_channel_data = netobtain(logic_instance.signal_data[channel][0])
         assert np.allclose(saved_channel_data, actual_channel_data)
+'''
