@@ -37,12 +37,12 @@ TOLERANCE = 10 # tolerance for signal data range
 
 def get_scanner(logic_instance):
     """
-    Getter for scanner logic_instance logic_instance for logic logic_instance.
+    Getter for scanner module for ODMR logic module.
 
     Parameters
     ----------
     logic_instance : Object
-        logic logic_instance logic_instance
+        ODMR logic_instance
 
     Returns
     -------

@@ -123,6 +123,7 @@ def start_qudi_process():
     """
     qudi_process = multiprocessing.Process(target=run_qudi)
     qudi_process.start()
+    print('started qudi')
     yield
     qudi_process.join(timeout=5)
     if qudi_process.is_alive():
@@ -134,7 +135,9 @@ def remote_instance(start_qudi_process):
     Fixture that connects to the running Qudi ipython kernel through rpyc client and returns the client instance.
     """
     time.sleep(5)
+    print('attempting connection')
     conn = rpyc.connect("localhost", 18861, config={'sync_request_timeout': 60})
     root = conn.root
+    print('established connection ',root)
     qudi_instance = root._qudi
     return qudi_instance
