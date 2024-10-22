@@ -41,27 +41,18 @@ Best regards,
 Your GitHub Actions Bot
 """
 
-print(body)
-# Create the email
 message = MIMEMultipart()
 message["From"] = email_user
 message["To"] = email_to
 message["Subject"] = subject
 message.attach(MIMEText(body, "plain"))
 
-
 try:
-    # Establish SSL connection with the SMTP server
     server = smtplib.SMTP(smtp_server, smtp_port)
-    server.starttls()  # Secure the connection
-    # Log in to the SMTP server
+    server.starttls()  
     server.login(email_user, email_password)
-
-    # Send the email
     server.sendmail(email_user, email_to, message.as_string())
     print(f"Email sent to {email_to}")
-
-    # Close the connection
     server.quit()
 
 except Exception as e:
