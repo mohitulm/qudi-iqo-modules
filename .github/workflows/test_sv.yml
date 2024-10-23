@@ -55,7 +55,7 @@ jobs:
 
     - name: Test with pytest
       run: |
-        pytest  tests/test_run_modules.py -s
+         pytest tests\test_reset_status_var.py
 
     - name: Switch to test branch
       run: |
