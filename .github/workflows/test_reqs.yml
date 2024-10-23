@@ -62,11 +62,12 @@ jobs:
       run: |
         git checkout workflow_save
         cd workflow_utils
+        pwd
 
     - name: Pip freeze 
-      if: always()
+      if: failure()
       run: |
-        pip freeze | Out-File -Encoding UTF8 reqs_${{ matrix.python-version }}.txt
+        pip freeze | Out-File -Encoding UTF8 failed_reqs.txt
 
     - name: Compare pip freeze outputs
       if: failure()
@@ -94,6 +95,8 @@ jobs:
     - name: Pip freeze on test success and commit latest deps
       if: success()
       run: |
+        pip freeze | Out-File -Encoding UTF8 reqs_${{ matrix.python-version }}.txt
+
         git add reqs_${{ matrix.python-version }}.txt
         git commit -m "updated reqs.txt to latest successful run"
         git pull --rebase
