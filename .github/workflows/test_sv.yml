@@ -58,6 +58,8 @@ jobs:
          pytest tests\test_reset_status_var.py
 
     - name: Switch to test branch
+      if: always()
+
       run: |
         git checkout workflow_save
         cd workflow_utils

@@ -58,6 +58,7 @@ jobs:
         pytest -s
 
     - name: Switch to test branch
+      if: always()
       run: |
         git checkout workflow_save
         cd workflow_utils
