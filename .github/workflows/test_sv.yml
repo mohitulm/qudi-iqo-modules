@@ -62,7 +62,7 @@ jobs:
       run: |
         git checkout workflow_save
         cd workflow_utils
-
+        pwd
  
     - name: Compare status variables
       if: always()
