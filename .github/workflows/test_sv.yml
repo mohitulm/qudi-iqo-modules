@@ -67,6 +67,8 @@ jobs:
     - name: Compare status variables
       if: always()
       run: |
+       pwd
+       ls
        python compare_status_vars.py 
 
     - name: Upload status vars diff
