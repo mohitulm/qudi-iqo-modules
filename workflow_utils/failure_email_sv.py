@@ -12,12 +12,14 @@ EMAIL_TO = 'mohit.shah@uni-ulm.de'
 
 parser = ArgumentParser()
 parser.add_argument('-d', '--diff_file', metavar='', required=True, help="sv diff dump")
+parser.add_argument('-f', '--failure', action='store_true')
 args = parser.parse_args()
-python_version = args.python_version
+tests_failed = args.failure
 diff_file = args.diff_file
 
 with open(diff_file) as diff:
-    dep_diff = ''.join(diff.readlines())
+    sv_status = ''.join(diff.readlines())
+    dep_diff =   not 'No differences found'in sv_status
 
 smtp_server = SMTP_SERVER
 smtp_port = SMTP_PORT
@@ -29,20 +31,32 @@ sv_changed = True if dep_diff else False
 
 if sv_changed:
 
-    # Email content
-    subject = "❗ GitHub Actions: Test Job Failure Alert"
-    body = f"""
-    Hello,
+    if tests_failed:
+        subject = "❗ GitHub Actions: Test Job Failure, Status variable changed Alert"
+        body = f"""
+        Hello,
 
-    This is an automated message to notify you that the GitHub Actions test job has failed .
+        This is an automated message to notify you that the GitHub Actions test job has failed .
 
-    The tests failed and the following status variables changed 
+        The tests failed and the following status variables changed 
 
-    {dep_diff}
+        {sv_status}
 
-    Best regards,
-    Your GitHub Actions Bot
-    """
+        Best regards,
+        Your GitHub Actions Bot
+        """
+    else:
+        subject = "❗ GitHub Actions:  Status variable changed Alert"
+        body = f"""
+        Hello,
+
+        This is an automated message to notify you that the following status variables changed 
+
+        {sv_status}
+
+        Best regards,
+        Your GitHub Actions Bot
+        """
 
     message = MIMEMultipart()
     message["From"] = email_user

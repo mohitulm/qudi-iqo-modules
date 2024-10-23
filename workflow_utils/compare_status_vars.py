@@ -1,4 +1,4 @@
-import sys
+import shutil
 import os
 from qudi.util.yaml import yaml_load, yaml_dump
 from qudi.util.paths import get_appdata_dir
@@ -24,11 +24,21 @@ def compare_data(output_file = 'status_var_changes.txt'):
     errors = {}
     active_sv_dir = get_appdata_dir()
     active_svs_files = os.listdir(active_sv_dir)
+    if not os.path.isdir(SAVED_DIR) :
+        os.mkdir(SAVED_DIR)
+        for active_sv_file in active_svs_files:
+            if not ('logic' in active_sv_file or 'hardware' in active_sv_file):
+                continue
+            active_sv_file_path = os.path.join(active_sv_dir, active_sv_file)
+            shutil.copy(active_sv_file_path, SAVED_DIR)
+
     saved_svs_files = os.listdir(SAVED_DIR)
     active_not_saved = set(active_svs_files) - set(saved_svs_files)
     saved_not_active = set(saved_svs_files) - set(active_svs_files)
     print(f'active not saved {active_not_saved} , saved not active {saved_not_active}')
     for active_svs_file in os.listdir(active_sv_dir):
+        if not ('logic' in active_svs_file or 'hardware' in active_svs_file):
+            continue
         active_svs_fp = os.path.join(active_sv_dir, active_svs_file)
         active_svs = load_status_var(active_svs_fp)
 
