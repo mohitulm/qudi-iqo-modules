@@ -19,18 +19,83 @@ See the GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License along with qudi.
 If not, see <https://www.gnu.org/licenses/>.
 """
+
+import os
+import time
+import multiprocessing
+import rpyc
 import pytest
+from PySide2 import QtWidgets
+from PySide2.QtCore import QTimer
+from qudi.core import application
 from qudi.util.yaml import yaml_load, yaml_dump
 from qudi.util.paths import get_module_app_data_path
-from qudi.core.modulemanager import ModuleManager
 
-GUI_MODULE = 'odmr_gui'
 LOGIC_MODULE = 'odmr_logic'
+GUI_MODULE = 'odmr_gui'
 STATUS_VAR = 'run_time'
 VALUE = 10
+CONFIG = os.path.join(os.getcwd(),'tests/test.cfg')
+
+
+def run_qudi(timeout=150000):
+    """
+    Runs a Qudi instance with a timer.
+
+    Parameters
+    ----------
+    timeout : int, optional
+        timeout for the Qudi session in milliseconds, by default 150000.
+    """
+    app_cls = QtWidgets.QApplication
+    app = app_cls.instance()
+    if app is None:
+        app = app_cls()
+    qudi_instance = application.Qudi.instance()
+    if qudi_instance is None:
+        qudi_instance = application.Qudi(config_file=CONFIG)
+    QTimer.singleShot(timeout, qudi_instance.quit)
+    qudi_instance.run()
+
+
+@pytest.fixture(scope='module')
+def start_qudi_process():
+    """
+    Fixture that starts the Qudi process and ensures it's running before returning.
+    """
+    qudi_process = multiprocessing.Process(target=run_qudi)
+    qudi_process.start()
+    time.sleep(10)
+    yield
+    qudi_process.join(timeout=10)
+    if qudi_process.is_alive():
+        qudi_process.terminate()
+
+@pytest.fixture(scope='module')
+def remote_instance(start_qudi_process):
+    """
+    Fixture that connects to the running Qudi ipython kernel through rpyc client and returns the client instance.
+    """
+    time.sleep(5)
+    conn = rpyc.connect("localhost", 18861, config={'sync_request_timeout': 60})
+    root = conn.root
+    qudi_instance = root._qudi
+    return qudi_instance
+
+@pytest.fixture(scope='module')
+def logic_instance(remote_instance):
+    """ 
+    This fixture returns Odmr logic instance
+    """
+    module_manager = remote_instance.module_manager
+    module_manager.activate_module(GUI_MODULE)
+    logic_instance = module_manager._modules[LOGIC_MODULE].instance
+    return logic_instance
+
 
 def get_status_var_file(instance):
-    """This function returns the path for status variable file 
+    """
+    This function returns the path for status variable file 
 
     Parameters
     ----------
@@ -48,7 +113,8 @@ def get_status_var_file(instance):
     return file_path
 
 def load_status_var(file_path):    
-    """This function returns the loaded status variable from the file
+    """
+    This function returns the loaded status variable from the file
 
     Parameters
     ----------
@@ -68,7 +134,8 @@ def load_status_var(file_path):
     return variables
 
 def modify_status_var(status_vars, var, value):
-    """Setting status variable
+    """
+    Setting status variable
 
     Parameters
     ----------
@@ -88,7 +155,8 @@ def modify_status_var(status_vars, var, value):
     return status_vars
 
 def dump_status_variables(vars, file_path):
-    """Dump updated status variable to yaml
+    """
+    Dump updated status variable to yaml
 
     Parameters
     ----------
@@ -103,17 +171,9 @@ def dump_status_variables(vars, file_path):
         print("Failed to save status variables:", e)
 
 
-@pytest.fixture(scope='module')
-def logic_instance(remote_instance):
-    """This fixture returns Odmr logic instance"""
-    module_manager = remote_instance.module_manager
-    module_manager.activate_module(GUI_MODULE)
-    logic_instance = module_manager._modules[LOGIC_MODULE].instance
-    return logic_instance
-
-
 def test_status_vars(qudi_instance, qt_app):
-    """ Modifying a specific saved status variable for a specific module
+    """ 
+    Modifying a specific saved status variable for a specific module
 
     Parameters
     ----------
@@ -122,7 +182,7 @@ def test_status_vars(qudi_instance, qt_app):
     qt_app : fixture
         qt app instance
     """    
-    module_manager = ModuleManager.instance()
+    module_manager = qudi_instance.module_manager
     qudi_instance._configure_qudi()
     try:
         module_manager.modules[LOGIC_MODULE]._load()
@@ -136,10 +196,9 @@ def test_status_vars(qudi_instance, qt_app):
     modified_vars = modify_status_var(status_vars, STATUS_VAR, VALUE)
     dump_status_variables(modified_vars, status_var_file_path)
 
-
-
 def test_status_vars_changed(logic_instance, qudi_instance):
-    """Test whether the status variable has changed
+    """
+    Test whether the status variable has changed
     
     Parameters
     ----------
@@ -150,4 +209,3 @@ def test_status_vars_changed(logic_instance, qudi_instance):
     """    
     status_variable = '_' + STATUS_VAR
     assert getattr(logic_instance, status_variable) == VALUE
-    

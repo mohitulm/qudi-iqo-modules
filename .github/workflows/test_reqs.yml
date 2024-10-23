@@ -61,6 +61,7 @@ jobs:
     - name: Switch to test branch
       run: |
         git checkout workflow
+        cd workflow_utils
 
     - name: Pip freeze 
       if: always()

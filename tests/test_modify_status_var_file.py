@@ -19,22 +19,76 @@ See the GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License along with qudi.
 If not, see <https://www.gnu.org/licenses/>.
 """
-
-import random
+import os
 import time
+import random
 import string
 import pytest
 import numpy as np
+import multiprocessing
+import rpyc
+from PySide2 import QtWidgets
+from PySide2.QtCore import QTimer
+from qudi.core import application
 from qudi.util.yaml import yaml_load, yaml_dump
 from qudi.util.paths import get_module_app_data_path
 
+CONFIG = os.path.join(os.getcwd(),'tests/test.cfg')
+
+
+def run_qudi(timeout=150000):
+    """
+    Runs a Qudi instance with a timer.
+
+    Parameters
+    ----------
+    timeout : int, optional
+        timeout for the Qudi session in milliseconds, by default 150000.
+    """
+    app_cls = QtWidgets.QApplication
+    app = app_cls.instance()
+    if app is None:
+        app = app_cls()
+    qudi_instance = application.Qudi.instance()
+    if qudi_instance is None:
+        qudi_instance = application.Qudi(config_file=CONFIG)
+    QTimer.singleShot(timeout, qudi_instance.quit)
+    qudi_instance.run()
+
+@pytest.fixture(scope='module')
+def start_qudi_process():
+    """
+    Fixture that starts the Qudi process and ensures it's running before returning.
+    """
+    qudi_process = multiprocessing.Process(target=run_qudi)
+    qudi_process.start()
+    time.sleep(10)
+    yield
+    qudi_process.join(timeout=10)
+    if qudi_process.is_alive():
+        qudi_process.terminate()
+
+@pytest.fixture(scope='module')
+def remote_instance(start_qudi_process):
+    """
+    Fixture that connects to the running Qudi ipython kernel through rpyc client and returns the client instance.
+    """
+    time.sleep(5)
+    conn = rpyc.connect("localhost", 18861, config={'sync_request_timeout': 60})
+    root = conn.root
+    qudi_instance = root._qudi
+    return qudi_instance
+
 @pytest.fixture
 def module_manager(remote_instance):
-    """ Fixture for module manager of qudi remote instance """
+    """ 
+    Fixture for module manager of qudi remote instance 
+    """
     return remote_instance.module_manager
 
 def generate_random_value(var):
-    """Generate random values for a given data type
+    """
+    Generate random values for a given data type
 
     Parameters
     ----------
@@ -76,7 +130,8 @@ def generate_random_value(var):
         raise ValueError(f"Unsupported data type: {type(var)}")
 
 def get_status_var_file(instance):
-    """This function returns the path for status variable file 
+    """
+    This function returns the path for status variable file 
 
     Parameters
     ----------
@@ -94,7 +149,8 @@ def get_status_var_file(instance):
     return file_path
 
 def load_status_var(file_path):   
-    """This function returns the loaded status variable from the file
+    """
+    This function returns the loaded status variable from the file
 
     Parameters
     ----------
@@ -114,7 +170,8 @@ def load_status_var(file_path):
     return variables
 
 def modify_status_var(status_vars):
-    """This function updates the status variables with random values of the same data type
+    """
+    This function updates the status variables with random values of the same data type
 
     Parameters
     ----------
@@ -136,7 +193,8 @@ def modify_status_var(status_vars):
     return status_vars
 
 def dump_status_variables(vars, file_path):
-    """Dump updated status variable to yaml
+    """
+    Dump updated status variable to yaml
 
     Parameters
     ----------
@@ -151,9 +209,11 @@ def dump_status_variables(vars, file_path):
         print("Failed to save status variables:", e)
 
 
+'''
 # Updating status vars to illegal values might break modules, ( For example, PID has no way no reset status vars)
 def test_update_status_vars(qudi_instance, gui_modules, hardware_modules, qt_app):
-    """Test to check if qudi modules launch correctly after modifying saved status variables 
+    """
+    Test to check if qudi modules launch correctly after modifying saved status variables 
 
     Parameters
     ----------
@@ -194,11 +254,13 @@ def test_update_status_vars(qudi_instance, gui_modules, hardware_modules, qt_app
             logic_instance = module_manager.modules[required_logic_module].instance
             status_var_file_path = get_status_var_file(logic_instance)
             vars = load_status_var(status_var_file_path)
-            #modified_vars = modify_status_var(vars)
-            #dump_status_variables(modified_vars, status_var_file_path)
+            modified_vars = modify_status_var(vars)
+            dump_status_variables(modified_vars, status_var_file_path)
 
-def test_status_vars(module_manager, gui_modules, qt_app, qudi_instance):
-    """Test if GUI modules are activated correctly after updating the saved files.
+
+def test_status_vars(module_manager, gui_modules, qudi_instance, qt_app):
+    """
+    Test if GUI modules are activated correctly after updating the saved files.
 
     Parameters
     ----------
@@ -211,11 +273,13 @@ def test_status_vars(module_manager, gui_modules, qt_app, qudi_instance):
     qt_app : fixture
         Instance of Qt app
     """    
-    for gui_module in gui_modules[:1]:
+    for gui_module in gui_modules:
         module_manager.activate_module(gui_module)
         gui_managed_module = module_manager.modules[gui_module]
         assert gui_managed_module.is_active
         time.sleep(5)
         module_manager.deactivate_module(gui_module)
         time.sleep(1)
+    qudi_instance.quit()
 
+'''
