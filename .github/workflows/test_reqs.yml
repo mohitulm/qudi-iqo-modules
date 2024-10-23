@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group:  ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   test:
@@ -42,11 +42,10 @@ jobs:
     - name: Checkout qudi core
       run: |
         cd ..
-        git clone https://github.com/prithviulm/qudi-core.git
+        git clone https://github.com/Ulm-IQO/qudi-core.git
         cd qudi-core
         python -m pip install --upgrade pip
-        pip install -e ".[dev-test]"
-        git checkout application_test
+        pip install -e .
         qudi-install-kernel
         cd ../qudi-iqo-modules
 
