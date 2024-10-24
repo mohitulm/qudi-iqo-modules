@@ -61,11 +61,10 @@ jobs:
       if: always()
       run: |
         git checkout workflow_save
-        cd workflow_utils
-        pwd
 
     - name: Pip freeze 
       if: failure()
+      working-directory: workflow_utils
       run: |
         pip freeze | Out-File -Encoding UTF8 failed_reqs.txt
 
@@ -77,11 +76,10 @@ jobs:
 
     - name: Upload pip freeze diff
       if: failure()
-      working-directory: workflow_utils
       uses: actions/upload-artifact@v4
       with:
         name: pip-freeze-diff-${{ matrix.python-version }}
-        path: pip_freeze_diff_${{ matrix.python-version }}.txt
+        path: workflow_utils/pip_freeze_diff_${{ matrix.python-version }}.txt
 
     - name: send email in case of failure
       if: failure()
