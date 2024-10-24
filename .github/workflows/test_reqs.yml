@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "main" ]
   schedule:
-    - cron: '40 * * * *' 
+    - cron: '10 * * * *' 
 
 permissions:
   contents: write
@@ -85,7 +85,7 @@ jobs:
       if: failure()
       working-directory: workflow_utils
       run: |
-        python failure_reqs_email.py -p ${{ matrix.python-version }} -d pip_freeze_diff_${{ matrix.python-version }}.txt
+        python failure_email_req.py -p ${{ matrix.python-version }} -d pip_freeze_diff_${{ matrix.python-version }}.txt
 
 
     - name: Configure git

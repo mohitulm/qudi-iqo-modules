@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "main" ]
   schedule:
-    - cron: '40 * * * *' 
+    - cron: '10 * * * *' 
 
 permissions:
   contents: write
@@ -80,7 +80,7 @@ jobs:
       if: failure()
       working-directory: workflow_utils
       run: |
-        python failure_sv_email.py -f -d status_var_changes.txt
+        python failure_email_sv.py -f -d status_var_changes.txt
 
     - name: send email in case of changes but successful run
       if: success()
