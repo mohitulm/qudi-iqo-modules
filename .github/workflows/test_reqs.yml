@@ -71,11 +71,13 @@ jobs:
 
     - name: Compare pip freeze outputs
       if: failure()
+      working-directory: workflow_utils
       run: |
        python compare_pip_freeze.py failed_reqs.txt reqs_${{ matrix.python-version }}.txt pip_freeze_diff_${{ matrix.python-version }}.txt
 
     - name: Upload pip freeze diff
       if: failure()
+      working-directory: workflow_utils
       uses: actions/upload-artifact@v4
       with:
         name: pip-freeze-diff-${{ matrix.python-version }}
@@ -83,6 +85,7 @@ jobs:
 
     - name: send email in case of failure
       if: failure()
+      working-directory: workflow_utils
       run: |
         python failure_reqs_email.py -p ${{ matrix.python-version }} -d pip_freeze_diff_${{ matrix.python-version }}.txt
 
@@ -95,8 +98,8 @@ jobs:
     - name: Pip freeze on test success and commit latest deps
       if: success()
       run: |
+        cd workflow_utils
         pip freeze | Out-File -Encoding UTF8 reqs_${{ matrix.python-version }}.txt
-
         git add reqs_${{ matrix.python-version }}.txt
         git commit -m "updated reqs.txt to latest successful run"
         git pull --rebase
