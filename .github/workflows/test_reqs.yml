@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "main" ]
   schedule:
-    - cron: '30 * * * *' 
+    - cron: '40 * * * *' 
 
 permissions:
   contents: write
@@ -21,6 +21,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
         python-version: ['3.8', '3.9', '3.10']
    

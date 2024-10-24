@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "main" ]
   schedule:
-    - cron: '30 * * * *' 
+    - cron: '40 * * * *' 
 
 permissions:
   contents: write
@@ -74,19 +74,19 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: status_vars_diff
-        path: workflow_utils/status_vars_changes.txt
+        path: workflow_utils/status_var_changes.txt
 
     - name: send email in case of failure
       if: failure()
       working-directory: workflow_utils
       run: |
-        python failure_sv_email.py -f -d status_vars_changes.txt
+        python failure_sv_email.py -f -d status_var_changes.txt
 
     - name: send email in case of changes but successful run
       if: success()
       working-directory: workflow_utils
       run: |
-        python failure_email_sv.py -d status_vars_changes.txt
+        python failure_email_sv.py -d status_var_changes.txt
 
     - name: Configure git
       run: |
