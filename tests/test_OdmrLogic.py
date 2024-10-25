@@ -75,13 +75,46 @@ def start_qudi_process():
     if qudi_process.is_alive():
         qudi_process.terminate()
 
+def connect_with_retries(host, port, config, retries=5, delay=2):
+    """
+    Attempt to connect multiple times to the RPyC server.
+
+    Parameters:
+    - host (str): The server's hostname or IP address.
+    - port (int): The port number to connect to.
+    - retries (int): Number of retries before giving up.
+    - delay (int or float): Delay in seconds between attempts.
+
+    Returns:
+    - conn (rpyc.Connection): The RPyC connection if successful.
+
+    Raises:
+    - Exception: If all attempts fail.
+    """
+    attempt = 0
+    while attempt < retries:
+        try:
+            print(f"Attempt {attempt + 1} of {retries}...")
+            conn = rpyc.connect(host, port, config)
+            print("Connection successful!")
+            return conn  # Return the connection object if successful
+        except (ConnectionRefusedError, EOFError, rpyc.core.protocol.ConnectionError, TimeoutError) as e:
+            print(f"Connection attempt {attempt + 1} failed: {e}")
+            attempt += 1
+            if attempt < retries:
+                print(f"Retrying in {delay} seconds...")
+                time.sleep(delay)
+            else:
+                print("All connection attempts failed.")
+                raise  # Re-raise the last exception after final attempt
+
 @pytest.fixture(scope='module')
 def remote_instance(start_qudi_process):
     """
     Fixture that connects to the running Qudi ipython kernel through rpyc client and returns the client instance.
     """
     time.sleep(5)
-    conn = rpyc.connect("localhost", 18861, config={'sync_request_timeout': 120})
+    conn = connect_with_retries("localhost", 18861, config={'sync_request_timeout': 20})
     root = conn.root
     qudi_instance = root._qudi
     return qudi_instance
