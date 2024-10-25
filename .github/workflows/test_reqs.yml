@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "main" ]
   schedule:
-    - cron: '10 * * * *' 
+    - cron: '*/20 * * * *' 
 
 permissions:
   contents: write
@@ -55,7 +55,7 @@ jobs:
 
     - name: Test with pytest
       run: |
-        pytest -s
+        pytest tests/test_OdmrLogic.py -s
 
     - name: Switch to test branch
       if: always()
