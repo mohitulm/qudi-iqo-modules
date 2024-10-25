@@ -9,9 +9,6 @@ on:
   schedule:
     - cron: '*/20 * * * *' 
 
-permissions:
-  contents: write
-
 concurrency:
   group:  ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
@@ -55,51 +52,3 @@ jobs:
     - name: Test with pytest
       run: |
         pytest tests/test_OdmrLogic.py -s
-
-    - name: Switch to test branch
-      if: always()
-      run: |
-        git checkout workflow_save
-
-    - name: Pip freeze 
-      if: failure()
-      working-directory: workflow_utils
-      run: |
-        pip freeze | Out-File -Encoding UTF8 failed_reqs.txt
-
-    - name: Compare pip freeze outputs
-      if: failure()
-      working-directory: workflow_utils
-      run: |
-       python compare_pip_freeze.py failed_reqs.txt reqs_${{ matrix.python-version }}.txt pip_freeze_diff_${{ matrix.python-version }}.txt
-
-    - name: Upload pip freeze diff
-      if: failure()
-      uses: actions/upload-artifact@v4
-      with:
-        name: pip-freeze-diff-${{ matrix.python-version }}
-        path: workflow_utils/pip_freeze_diff_${{ matrix.python-version }}.txt
-
-    - name: send email in case of failure
-      if: failure()
-      working-directory: workflow_utils
-      run: |
-        python failure_email_req.py -p ${{ matrix.python-version }} -d pip_freeze_diff_${{ matrix.python-version }}.txt
-
-
-    - name: Configure git
-      run: |
-        git config --global user.name "astropiuu"
-        git config --global user.email "mohit.shah@uni-ulm.de"
- 
-    - name: Pip freeze on test success and commit latest deps
-      if: success()
-      run: |
-        cd workflow_utils
-        pip freeze | Out-File -Encoding UTF8 reqs_${{ matrix.python-version }}.txt
-        git add reqs_${{ matrix.python-version }}.txt
-        git commit -m "updated reqs.txt to latest successful run"
-        git pull --rebase
-        git push --force-with-lease origin HEAD:workflow
-      env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
