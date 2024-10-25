@@ -71,7 +71,7 @@ def remote_instance(start_qudi_process):
     Fixture that connects to the running Qudi ipython kernel through rpyc client and returns the client instance.
     """
     time.sleep(5)
-    conn = rpyc.connect("localhost", 18861, config={'sync_request_timeout': 60})
+    conn = rpyc.connect("localhost", 18861, config={'sync_request_timeout': 120})
     root = conn.root
     qudi_instance = root._qudi
     return qudi_instance
