@@ -98,7 +98,7 @@ def connect_with_retries(host, port, config, retries=5, delay=2):
             conn = rpyc.connect(host, port, config)
             print("Connection successful!")
             return conn  # Return the connection object if successful
-        except (ConnectionRefusedError, EOFError, rpyc.core.protocol.ConnectionError, TimeoutError) as e:
+        except Exception as e:
             print(f"Connection attempt {attempt + 1} failed: {e}")
             attempt += 1
             if attempt < retries:
