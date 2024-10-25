@@ -95,7 +95,7 @@ def connect_with_retries(host, port, config, retries=5, delay=2):
     while attempt < retries:
         try:
             print(f"Attempt {attempt + 1} of {retries}...")
-            conn = rpyc.connect(host, port, config)
+            conn = rpyc.connect(host, port, config=config)
             print("Connection successful!")
             return conn  # Return the connection object if successful
         except Exception as e:
@@ -114,7 +114,7 @@ def remote_instance(start_qudi_process):
     Fixture that connects to the running Qudi ipython kernel through rpyc client and returns the client instance.
     """
     time.sleep(5)
-    conn = connect_with_retries("localhost", 18861, config={'sync_request_timeout': 20})
+    conn = connect_with_retries(host="localhost", port=18861, config={'sync_request_timeout': 20})
     root = conn.root
     qudi_instance = root._qudi
     return qudi_instance
