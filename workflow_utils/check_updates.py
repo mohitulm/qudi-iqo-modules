@@ -13,7 +13,7 @@ def get_latest_version(package_name):
 
 updates_available = False
 
-with open("worflow_utils/reqs_3.10.txt") as f:
+with open("workflow_utils/reqs_3.10.txt") as f:
     for line in f:
         line = line.strip()
         if not line or line.startswith("#"):
