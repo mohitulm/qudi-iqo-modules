@@ -2,7 +2,7 @@ import os
 import requests
 from packaging import version
 from packaging.specifiers import SpecifierSet
-PYTHON_VERSION = 3.10
+PYTHON_VERSION = '3.10'
 
 def get_compatible_latest_version(package_name, project_python_version):
     response = requests.get(f"https://pypi.org/pypi/{package_name}/json")
