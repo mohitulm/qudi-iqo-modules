@@ -128,6 +128,6 @@ jobs:
         git add reqs_${{ matrix.python-version }}.txt
         git commit -m "updated reqs.txt to latest successful run"
         git pull --rebase
-        git push --force-with-lease origin HEAD:workflow
+        git push --force-with-lease origin HEAD:workflow_save
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

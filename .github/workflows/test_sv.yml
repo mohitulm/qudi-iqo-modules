@@ -103,6 +103,6 @@ jobs:
         git add *
         git commit -m "updated saved sv to latest successful run"
         git pull --rebase
-        git push --force-with-lease origin HEAD:workflow
+        git push --force-with-lease origin HEAD:workflow_save
       env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
