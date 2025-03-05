@@ -17,7 +17,31 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  check-package-updates:
+    runs-on: ubuntu-latest
+    outputs:
+      updates-available: ${{ steps.check-updates.outputs.updates-available }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install script dependencies
+        run: 
+          pip install requests packaging
+      
+
+      - name: Check for new package versions
+        id: check-updates
+        run: |
+          git checkout workflow_save
+          python workflow_utils/check_updates.py  
   test:
+    needs: check-package-updates
+    if: ${{ needs.check-package-updates.outputs.updates-available == 'true' }}
     runs-on: windows-latest
     strategy:
       fail-fast: false
