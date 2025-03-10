@@ -109,14 +109,14 @@ python-decouple==3.8
 python-json-logger==3.3.0
 pytz==2025.1
 PyVISA==1.14.1
-pywin32==308
+pywin32==309
 pywinpty==2.0.14
 PyYAML==6.0.2
 pyzmq==26.2.1
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@c752fd8be3c2e3c65e7c5a839273ccd736314427#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@99a9efd7fc725094abcc91da54fc50f38105b4a0#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@141330108799161534ee09df08e9f90097e5eedd#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.35.1
 requests==2.32.3
