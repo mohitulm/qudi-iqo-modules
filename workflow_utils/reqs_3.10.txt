@@ -5,7 +5,7 @@ arrow==1.3.0
 asteval==1.0.6
 asttokens==3.0.0
 async-lru==2.0.4
-attrs==25.2.0
+attrs==25.3.0
 babel==2.17.0
 beautifulsoup4==4.13.3
 bleach==6.2.0
@@ -109,7 +109,7 @@ pyzmq==26.3.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@c752fd8be3c2e3c65e7c5a839273ccd736314427#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@8c28fb847471dce1f3142b62efc881a0256060ac#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@16017406792cb3b3dc40585e2b813eee1ebd52ab#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
