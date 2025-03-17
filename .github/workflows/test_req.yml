@@ -74,7 +74,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -e .
         qudi-install-kernel
+        cp pyproject.toml ../pyproject_core.toml
         cd ../qudi-iqo-modules
+        cp pyproject.toml ../pyproject_iqo.toml
 
     - name: Install dependencies for iqo modules
       run: |
@@ -124,8 +126,11 @@ jobs:
       if: success()
       run: |
         cd workflow_utils
+        cp ../pyproject_core.toml .
+        cp ../pyproject_iqo.toml .
+
         pip freeze | Out-File -Encoding UTF8 reqs_${{ matrix.python-version }}.txt
-        git add reqs_${{ matrix.python-version }}.txt
+        git add -all
         git commit -m "updated reqs.txt to latest successful run"
         git pull --rebase
         git push --force-with-lease origin HEAD:workflow_save
