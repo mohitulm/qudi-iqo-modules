@@ -126,8 +126,8 @@ jobs:
       if: success()
       run: |
         cd workflow_utils
-        cp ../pyproject_core.toml .
-        cp ../pyproject_iqo.toml .
+        cp ../../pyproject_core.toml .
+        cp ../../pyproject_iqo.toml .
 
         pip freeze | Out-File -Encoding UTF8 reqs_${{ matrix.python-version }}.txt
         git add -all
