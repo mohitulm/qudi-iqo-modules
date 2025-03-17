@@ -34,7 +34,7 @@ jobs:
 
     - name: Install script dependencies
       run: 
-        pip install requests packaging
+        pip install requests packaging toml
     
 
     - name: Check for new package versions
