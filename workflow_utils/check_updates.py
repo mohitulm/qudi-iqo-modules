@@ -38,7 +38,6 @@ def get_constrained_dependencies():
             req = Requirement(constraint)
             package_name = req.name
             packages_with_constraints.append(package_name)
-    print(packages_with_constraints)
     return packages_with_constraints
 
 constrained_dependencies = get_constrained_dependencies()
