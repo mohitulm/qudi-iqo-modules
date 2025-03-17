@@ -27,8 +27,8 @@ def get_compatible_latest_version(package_name, project_python_version):
         return None  
 
 def get_constrained_dependencies():
-    core_pyproject_toml = 'pyproject_core.toml'
-    iqo_pyproject_toml = 'pyproject_iqo.toml'
+    core_pyproject_toml = 'workflow_utils/pyproject_core.toml'
+    iqo_pyproject_toml = 'workflow_utils/pyproject_iqo.toml'
 
     core_constraints = get_pinned_packages.get_constrained_dependencies(core_pyproject_toml)
     iqo_constraints = get_pinned_packages.get_constrained_dependencies(iqo_pyproject_toml)
