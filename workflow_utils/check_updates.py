@@ -41,7 +41,7 @@ def get_constrained_dependencies():
     return packages_with_constraints
 
 constrained_dependencies = get_constrained_dependencies()
-
+updates_available = False
 with open("workflow_utils/reqs_3.10.txt") as f:
     for line in f:
         line = line.strip()
