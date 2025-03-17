@@ -1,11 +1,11 @@
-anyio==4.8.0
+anyio==4.9.0
 argcomplete==3.6.0
 argon2-cffi==23.1.0
 argon2-cffi-bindings==21.2.0
 arrow==1.3.0
 asteval==1.0.6
 asttokens==3.0.0
-async-lru==2.0.4
+async-lru==2.0.5
 attrs==25.3.0
 babel==2.17.0
 beautifulsoup4==4.13.3
@@ -17,7 +17,7 @@ click==8.1.8
 colorama==0.4.6
 comm==0.2.2
 contourpy==1.3.0
-coverage==7.6.12
+coverage==7.7.0
 cycler==0.12.1
 debugpy==1.8.13
 decorator==5.2.1
@@ -106,14 +106,14 @@ python-dateutil==2.9.0.post0
 python-decouple==3.8
 python-json-logger==3.3.0
 PyVISA==1.14.1
-pywin32==309
+pywin32==310
 pywinpty==2.0.15
 PyYAML==6.0.2
 pyzmq==26.3.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@c752fd8be3c2e3c65e7c5a839273ccd736314427#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@d48178bf3703fa74bdc0092c2af3c039cc234e0b#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@38948ccfc6bf08a71f15b9e19d52910118e6b275#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
