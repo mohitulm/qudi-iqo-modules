@@ -97,7 +97,7 @@ psutil==7.0.0
 pure_eval==0.2.3
 pycparser==2.22
 Pygments==2.19.1
-pyparsing==3.2.2
+pyparsing==3.2.3
 pyqtgraph==0.13.7
 PySide2==5.15.2.1
 pytest==8.3.5
@@ -113,7 +113,7 @@ pyzmq==26.3.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@77e120f657a0ca1cefb504406dd0ad86fc1eef9c#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@5d4d26310060b1fb47c3e0642fbf6f3917fdc8e7#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
@@ -149,5 +149,5 @@ webcolors==24.11.1
 webencodings==0.5.1
 websocket-client==1.8.0
 widgetsnbextension==4.0.13
-zaber_motion==7.5.0
+zaber_motion==7.6.0
 zipp==3.21.0
