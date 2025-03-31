@@ -1,5 +1,5 @@
 anyio==4.9.0
-argcomplete==3.6.0
+argcomplete==3.6.1
 argon2-cffi==23.1.0
 argon2-cffi-bindings==21.2.0
 arrow==1.3.0
@@ -17,7 +17,7 @@ click==8.1.8
 colorama==0.4.6
 comm==0.2.2
 contourpy==1.3.0
-coverage==7.7.1
+coverage==7.8.0
 cycler==0.12.1
 debugpy==1.8.13
 decorator==5.2.1
@@ -88,7 +88,7 @@ pandocfilters==1.5.1
 parso==0.8.4
 pillow==11.1.0
 pipx==1.7.1
-platformdirs==4.3.6
+platformdirs==4.3.7
 pluggy==1.5.0
 plumbum==1.9.0
 prometheus_client==0.21.1
@@ -113,7 +113,7 @@ pyzmq==26.3.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@0b802cf9fda719cf4c6364417d974913c8e10137#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@ced33e57b45e93c74b1d0717035eaeee1c6da79e#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
