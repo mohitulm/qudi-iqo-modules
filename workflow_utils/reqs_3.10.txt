@@ -83,7 +83,7 @@ overrides==7.7.0
 packaging==24.2
 pandocfilters==1.5.1
 parso==0.8.4
-pillow==11.1.0
+pillow==11.2.0
 platformdirs==4.3.7
 pluggy==1.5.0
 plumbum==1.9.0
@@ -101,7 +101,7 @@ pytest-qt==4.4.0
 python-dateutil==2.9.0.post0
 python-decouple==3.8
 python-json-logger==3.3.0
-PyVISA==1.14.1
+PyVISA==1.15.0
 pywin32==310
 pywinpty==2.0.15
 PyYAML==6.0.2
@@ -109,7 +109,7 @@ pyzmq==26.3.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@3d89b2d18a1bfa997f8a5eed6b41cad7b0c480ae#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@4263972ef1e3b7b2ebff578cf4ac0246fadb2f19#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
