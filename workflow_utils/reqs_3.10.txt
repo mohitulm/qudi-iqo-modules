@@ -105,11 +105,11 @@ PyVISA==1.15.0
 pywin32==310
 pywinpty==2.0.15
 PyYAML==6.0.2
-pyzmq==26.3.0
+pyzmq==26.4.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@669a4efa30b3b629aaa15d23796e111a1844914c#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@4e31ff1fc59e9acd98a1d0b14a15b18000c8a57e#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
