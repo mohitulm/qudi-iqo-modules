@@ -35,7 +35,6 @@ def compare_data(output_file = 'status_var_changes.txt'):
     saved_svs_files = os.listdir(SAVED_DIR)
     active_not_saved = set(active_svs_files) - set(saved_svs_files)
     saved_not_active = set(saved_svs_files) - set(active_svs_files)
-    print(f'active not saved {active_not_saved} , saved not active {saved_not_active}')
     for active_svs_file in os.listdir(active_sv_dir):
         if not ('logic' in active_svs_file or 'hardware' in active_svs_file):
             continue
@@ -58,7 +57,6 @@ def compare_data(output_file = 'status_var_changes.txt'):
                     for (var, saved_val, curr_value) in changes:
                         file.write(f"{sv_file} : {var}: {saved_val} -> {curr_value}\n")
                         print(f"{var}: {saved_val} -> {curr_value}\n")
-    print('Errors ', errors)
 
 
 if __name__ == "__main__":

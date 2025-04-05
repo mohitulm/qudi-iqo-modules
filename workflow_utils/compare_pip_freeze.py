@@ -14,6 +14,7 @@ def read_requirements(file_path):
         return packages
 
 def compare_pip_freeze(current_file, previous_file, output_file):
+    """"Compares two pip freeze outputs and writes the differences to an output file."""
     current = read_requirements(current_file)
     previous = read_requirements(previous_file)
     added = current.keys() - previous.keys()

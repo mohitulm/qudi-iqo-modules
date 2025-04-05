@@ -11,6 +11,7 @@ from workflow_utils import get_pinned_packages
 PYTHON_VERSION = '3.10'
 
 def get_compatible_latest_version(package_name, project_python_version):
+    """Fetches the latest compatible version of a package from PyPI."""
     response = requests.get(f"https://pypi.org/pypi/{package_name}/json")
     data = response.json()
     
@@ -27,6 +28,7 @@ def get_compatible_latest_version(package_name, project_python_version):
         return None  
 
 def get_constrained_dependencies():
+    """Get the constrained dependencies from pyproject.toml files."""	
     core_pyproject_toml = 'workflow_utils/pyproject_core.toml'
     iqo_pyproject_toml = 'workflow_utils/pyproject_iqo.toml'
 
@@ -61,7 +63,6 @@ with open("workflow_utils/reqs_3.10.txt") as f:
             print(f"🔄 New version: {pkg_name} ({current_version} → {latest_version})")
             updates_available = True
 
-print(updates_available)
 
 with open(os.environ["GITHUB_OUTPUT"], "a") as f:
         f.write(f"updates-available={'true' if updates_available else 'false'}\n")
