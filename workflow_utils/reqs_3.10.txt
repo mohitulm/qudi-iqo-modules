@@ -39,7 +39,7 @@ httpx==0.28.1
 idna==3.10
 iniconfig==2.1.0
 ipykernel==6.29.5
-ipython==8.34.0
+ipython==8.35.0
 ipywidgets==8.1.5
 isoduration==20.11.0
 jedi==0.19.2
@@ -109,7 +109,7 @@ pyzmq==26.4.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@b00b27ac9835b27434743a658579414d5b500ba3#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@1d6803687467dcfe83419d8f03f251a14be207b4#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
