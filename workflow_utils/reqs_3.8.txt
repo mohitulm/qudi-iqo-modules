@@ -116,7 +116,7 @@ pyzmq==26.4.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@0b17d0b3e3bec9912367313dc7aa4e24d1c47a04#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@41c457350b46e837e48eecab445586fbaf1c2458#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.35.1
 requests==2.32.3
