@@ -36,7 +36,7 @@ gitdb==4.0.12
 GitPython==3.1.44
 h11==0.14.0
 hightime==0.2.2
-httpcore==1.0.7
+httpcore==1.0.8
 httpx==0.28.1
 idna==3.10
 importlib_metadata==8.5.0
@@ -116,7 +116,7 @@ pyzmq==26.4.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@9a8c88b2f8aa457f109e7d9bddf7b42741e79e98#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@b41b1431713e611ed529d68a5750a5a71d8b088f#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.35.1
 requests==2.32.3
