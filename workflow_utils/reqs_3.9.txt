@@ -86,7 +86,7 @@ overrides==7.7.0
 packaging==24.2
 pandocfilters==1.5.1
 parso==0.8.4
-pillow==11.1.0
+pillow==11.2.1
 pipx==1.7.1
 platformdirs==4.3.7
 pluggy==1.5.0
@@ -113,7 +113,7 @@ pyzmq==26.4.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@4f58d25ad695998f8a6f00b06887540ca4c0e643#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@1669673986eafe8e1fb708801b8b2f48bb8a5ca4#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
