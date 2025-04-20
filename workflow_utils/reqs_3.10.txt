@@ -80,7 +80,7 @@ notebook==7.4.0
 notebook_shim==0.2.4
 numpy==1.26.4
 overrides==7.7.0
-packaging==24.2
+packaging==25.0
 pandocfilters==1.5.1
 parso==0.8.4
 pillow==11.2.1
@@ -109,7 +109,7 @@ pyzmq==26.4.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@23353f395d245fbe752258b3a93fc0f62800d32f#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@873949eaf1d72e9fff51293027d51b872bf412dc#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
