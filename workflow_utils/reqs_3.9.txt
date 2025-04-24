@@ -50,7 +50,7 @@ Jinja2==3.1.6
 json5==0.12.0
 jsonpointer==3.0.0
 jsonschema==4.23.0
-jsonschema-specifications==2024.10.1
+jsonschema-specifications==2025.4.1
 jupyter==1.1.1
 jupyter-console==6.6.3
 jupyter-events==0.12.0
@@ -79,11 +79,11 @@ nbconvert==7.16.6
 nbformat==5.10.4
 nest-asyncio==1.6.0
 nidaqmx==1.0.2
-notebook==7.4.0
+notebook==7.4.1
 notebook_shim==0.2.4
 numpy==1.26.4
 overrides==7.7.0
-packaging==24.2
+packaging==25.0
 pandocfilters==1.5.1
 parso==0.8.4
 pillow==11.2.1
@@ -113,7 +113,7 @@ pyzmq==26.4.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@451f2d24352c4c6feb3085f899c1955a428db5c0#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@46cf17279e41e8047a38c22912c19ecc7437101c#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
@@ -149,5 +149,5 @@ webcolors==24.11.1
 webencodings==0.5.1
 websocket-client==1.8.0
 widgetsnbextension==4.0.14
-zaber_motion==7.6.1
+zaber_motion==7.6.2
 zipp==3.21.0
