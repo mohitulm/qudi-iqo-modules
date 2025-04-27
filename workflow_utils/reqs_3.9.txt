@@ -10,7 +10,7 @@ attrs==25.3.0
 babel==2.17.0
 beautifulsoup4==4.13.4
 bleach==6.2.0
-certifi==2025.1.31
+certifi==2025.4.26
 cffi==1.17.1
 charset-normalizer==3.4.1
 click==8.1.8
@@ -63,7 +63,7 @@ jupyterlab==4.4.1
 jupyterlab_pygments==0.3.0
 jupyterlab_server==2.27.3
 jupyterlab_widgets==3.0.14
-jupytext==1.17.0
+jupytext==1.17.1
 kiwisolver==1.4.7
 lmfit==1.3.3
 lxml==5.4.0
@@ -113,7 +113,7 @@ pyzmq==26.4.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@75625ca6996836e5277fb0900abbf053c7a07f10#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@834a7485c531640f42b6381f8ea16b36292b0d51#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
