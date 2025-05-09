@@ -116,7 +116,7 @@ pyzmq==26.4.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@361bb6861a485f33238f5f3212737d972b6258d1#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@5e78d79b4768555e12378c0aba20338fd77ffd23#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.35.1
 requests==2.32.3
@@ -151,5 +151,5 @@ webcolors==24.8.0
 webencodings==0.5.1
 websocket-client==1.8.0
 widgetsnbextension==4.0.14
-zaber_motion==7.7.0
+zaber_motion==7.8.0
 zipp==3.20.2
