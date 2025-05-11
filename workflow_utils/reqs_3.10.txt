@@ -12,7 +12,7 @@ bleach==6.2.0
 certifi==2025.4.26
 cffi==1.17.1
 charset-normalizer==3.4.2
-click==8.1.8
+click==8.2.0
 colorama==0.4.6
 comm==0.2.2
 contourpy==1.3.2
@@ -24,10 +24,10 @@ defusedxml==0.7.1
 deprecation==2.1.0
 dill==0.4.0
 entrypoints==0.4
-exceptiongroup==1.2.2
+exceptiongroup==1.3.0
 executing==2.2.0
 fastjsonschema==2.21.1
-fonttools==4.57.0
+fonttools==4.58.0
 fqdn==1.5.1
 fysom==2.1.6
 gitdb==4.0.12
@@ -109,7 +109,7 @@ pyzmq==26.4.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@0147345e3eced1713223d6b646ce9e41bb13ae4c#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@bc2e8c3460f260cdb85f768fb0d1c762e21adce8#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@cecf40a202878c32359edd181d2897072726aeb6#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
