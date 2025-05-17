@@ -91,7 +91,7 @@ pipx==1.7.1
 platformdirs==4.3.8
 pluggy==1.6.0
 plumbum==1.9.0
-prometheus_client==0.21.1
+prometheus_client==0.22.0
 prompt_toolkit==3.0.51
 psutil==7.0.0
 pure_eval==0.2.3
@@ -113,7 +113,7 @@ pyzmq==26.4.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@b826f3f090f11e3a130e68885e01beac6802a672#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@00ee0cc18f0474b8e5b1898012f4b71424b86e7d#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@295a8f7843267e8ab9e40c49fb37bd678d6faada#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.3
@@ -136,7 +136,7 @@ tinycss2==1.4.0
 tomli==2.2.1
 tornado==6.5
 traitlets==5.14.3
-types-python-dateutil==2.9.0.20241206
+types-python-dateutil==2.9.0.20250516
 typing_extensions==4.13.2
 tzdata==2025.2
 tzlocal==5.3.1
