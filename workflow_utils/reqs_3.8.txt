@@ -1,5 +1,5 @@
 anyio==4.5.2
-argon2-cffi==23.1.0
+argon2-cffi==25.1.0
 argon2-cffi-bindings==21.2.0
 arrow==1.3.0
 asteval==1.0.5
@@ -116,7 +116,7 @@ pyzmq==26.4.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@b826f3f090f11e3a130e68885e01beac6802a672#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@1855ff4e11483df3baba1151c1b685df717fa705#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@443eb6c1a4ea86de324f02a9b533afc115aeafb5#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.35.1
 requests==2.32.3
@@ -151,5 +151,5 @@ webcolors==24.8.0
 webencodings==0.5.1
 websocket-client==1.8.0
 widgetsnbextension==4.0.14
-zaber_motion==7.8.2
+zaber_motion==7.8.3
 zipp==3.20.2
