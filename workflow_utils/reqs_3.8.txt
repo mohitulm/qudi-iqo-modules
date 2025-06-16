@@ -11,7 +11,7 @@ backcall==0.2.0
 backports.zoneinfo==0.2.1
 beautifulsoup4==4.13.4
 bleach==6.1.0
-certifi==2025.4.26
+certifi==2025.6.15
 cffi==1.17.1
 charset-normalizer==3.4.2
 click==8.1.8
@@ -116,7 +116,7 @@ pyzmq==27.0.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@b826f3f090f11e3a130e68885e01beac6802a672#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@030553b8e5a48d12f2490628a429c2b04009197b#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@e8280c003f83e8cfbcbe968f929451218caa11e4#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.35.1
 requests==2.32.4
