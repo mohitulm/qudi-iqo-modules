@@ -98,7 +98,7 @@ prompt_toolkit==3.0.51
 psutil==7.0.0
 pure_eval==0.2.3
 pycparser==2.22
-Pygments==2.19.1
+Pygments==2.19.2
 pyparsing==3.1.4
 pyqtgraph==0.13.3
 PySide2==5.15.2.1
@@ -116,7 +116,7 @@ pyzmq==27.0.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@b826f3f090f11e3a130e68885e01beac6802a672#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@cae337912df1f4570530558057e0d9ac33ba9d81#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@4beac2332cfea98fc7a845fd5e3b58ebd4033482#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.35.1
 requests==2.32.4
