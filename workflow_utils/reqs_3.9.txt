@@ -79,7 +79,7 @@ nbconvert==7.16.6
 nbformat==5.10.4
 nest-asyncio==1.6.0
 nidaqmx==1.1.0
-notebook==7.4.3
+notebook==7.4.4
 notebook_shim==0.2.4
 numpy==1.26.4
 overrides==7.7.0
@@ -113,7 +113,7 @@ pyzmq==27.0.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@b826f3f090f11e3a130e68885e01beac6802a672#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@2df803166abd57e68ee1338fa5b150d3161850bc#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@4e8c90909a046d1d276114aded6ecf7f9e2955cf#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.4
