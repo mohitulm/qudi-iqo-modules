@@ -60,13 +60,11 @@ jobs:
       if: always()
       run: |
         git checkout workflow_save
-        pwd
  
     - name: Compare status variables
       if: always()
       working-directory: workflow_utils
       run: |
-       pwd
        python compare_status_vars.py 
 
     - name: Upload status vars diff
