@@ -9,14 +9,14 @@ attrs==25.3.0
 babel==2.17.0
 beautifulsoup4==4.13.4
 bleach==6.2.0
-certifi==2025.6.15
+certifi==2025.7.9
 cffi==1.17.1
 charset-normalizer==3.4.2
 click==8.2.1
 colorama==0.4.6
 comm==0.2.2
 contourpy==1.3.2
-coverage==7.9.1
+coverage==7.9.2
 cycler==0.12.1
 debugpy==1.8.14
 decorator==5.2.1
@@ -27,7 +27,7 @@ entrypoints==0.4
 exceptiongroup==1.3.0
 executing==2.2.0
 fastjsonschema==2.21.1
-fonttools==4.58.4
+fonttools==4.58.5
 fqdn==1.5.1
 fysom==2.1.6
 gitdb==4.0.12
@@ -83,7 +83,7 @@ overrides==7.7.0
 packaging==25.0
 pandocfilters==1.5.1
 parso==0.8.4
-pillow==11.2.1
+pillow==11.3.0
 platformdirs==4.3.8
 pluggy==1.6.0
 plumbum==1.9.0
@@ -109,13 +109,13 @@ pyzmq==27.0.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@b826f3f090f11e3a130e68885e01beac6802a672#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@d1c99ba260c03459ad5fa4f74899f6303d809b54#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@9c381de213c8907088d516a77462a812a2f6e230#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.4
 rfc3339-validator==0.1.4
 rfc3986-validator==0.1.1
-rpds-py==0.25.1
+rpds-py==0.26.0
 rpyc==5.3.1
 ruamel.yaml==0.18.14
 ruamel.yaml.clib==0.2.12
@@ -132,8 +132,8 @@ tinycss2==1.4.0
 tomli==2.2.1
 tornado==6.5.1
 traitlets==5.14.3
-types-python-dateutil==2.9.0.20250516
-typing_extensions==4.14.0
+types-python-dateutil==2.9.0.20250708
+typing_extensions==4.14.1
 tzdata==2025.2
 tzlocal==5.3.1
 uncertainties==3.2.3
@@ -144,4 +144,4 @@ webcolors==24.11.1
 webencodings==0.5.1
 websocket-client==1.8.0
 widgetsnbextension==4.0.14
-zaber_motion==7.9.0
+zaber_motion==7.10.0
