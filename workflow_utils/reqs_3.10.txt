@@ -18,7 +18,7 @@ comm==0.2.2
 contourpy==1.3.2
 coverage==7.9.2
 cycler==0.12.1
-debugpy==1.8.14
+debugpy==1.8.15
 decorator==5.2.1
 defusedxml==0.7.1
 deprecation==2.1.0
@@ -109,7 +109,7 @@ pyzmq==27.0.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@b826f3f090f11e3a130e68885e01beac6802a672#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@4fdc1342177023451f27ef59f8c61539c08f9998#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@db60592cafa59945faee932d9bf6656279773a58#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.4
