@@ -41,7 +41,7 @@ idna==3.10
 importlib_metadata==8.7.0
 importlib_resources==6.5.2
 iniconfig==2.1.0
-ipykernel==6.29.5
+ipykernel==6.30.0
 ipython==8.18.1
 ipywidgets==8.1.7
 isoduration==20.11.0
@@ -114,7 +114,7 @@ pyzmq==27.0.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@2e7d19594ad102dd1c8a88c0549ad7923e55e48b#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@c84dca0c63cfeb4131001aa7d4e8938b82b89ca9#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.4
