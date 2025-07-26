@@ -14,7 +14,7 @@ cffi==1.17.1
 charset-normalizer==3.4.2
 click==8.2.1
 colorama==0.4.6
-comm==0.2.2
+comm==0.2.3
 contourpy==1.3.2
 coverage==7.10.0
 cycler==0.12.1
@@ -110,7 +110,7 @@ pyzmq==27.0.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@7a9050fc685bc1c28937e858ac08e337127d1316#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@13a92f7602f0a8ac9a39c4cf697905b91b6c5a5c#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.4
