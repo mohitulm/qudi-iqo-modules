@@ -1,6 +1,6 @@
 anyio==4.9.0
 argon2-cffi==25.1.0
-argon2-cffi-bindings==21.2.0
+argon2-cffi-bindings==25.1.0
 arrow==1.3.0
 asteval==1.0.6
 asttokens==3.0.0
@@ -76,7 +76,7 @@ nbclient==0.10.2
 nbconvert==7.16.6
 nbformat==5.10.4
 nest-asyncio==1.6.0
-nidaqmx==1.1.0
+nidaqmx==1.2.0
 notebook==7.4.4
 notebook_shim==0.2.4
 numpy==1.26.4
@@ -110,7 +110,7 @@ pyzmq==27.0.0
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@6af58bbc1ac01b1d34cbc66bbcb878e034f2282e#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@970a14733a3c739ee3bbaaaecd81e4e899e22f31#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.4
