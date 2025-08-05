@@ -1,4 +1,4 @@
-anyio==4.9.0
+anyio==4.10.0
 argcomplete==3.6.2
 argon2-cffi==25.1.0
 argon2-cffi-bindings==25.1.0
@@ -41,7 +41,7 @@ idna==3.10
 importlib_metadata==8.7.0
 importlib_resources==6.5.2
 iniconfig==2.1.0
-ipykernel==6.30.0
+ipykernel==6.30.1
 ipython==8.18.1
 ipywidgets==8.1.7
 isoduration==20.11.0
@@ -114,7 +114,7 @@ pyzmq==27.0.1
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@2421caa89f91a54c08a8150ab8cce6322939c888#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@86c29c4867516980bfbe2b396a89e09431cc63ed#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.4
