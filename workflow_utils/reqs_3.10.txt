@@ -60,7 +60,7 @@ jupyterlab==4.4.6
 jupyterlab_pygments==0.3.0
 jupyterlab_server==2.27.3
 jupyterlab_widgets==3.0.15
-jupytext==1.17.2
+jupytext==1.17.3
 kiwisolver==1.4.9
 lark==1.2.2
 lmfit==1.3.4
@@ -110,7 +110,7 @@ pyzmq==27.0.2
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@0dd97b51c17aa76917631b20e16ce79ddbbcc837#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@ee04957662edbcde5fe3f40e1b2f13e7d1a56d79#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.5
