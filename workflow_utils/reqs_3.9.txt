@@ -89,7 +89,7 @@ pandocfilters==1.5.1
 parso==0.8.5
 pillow==11.3.0
 pipx==1.7.1
-platformdirs==4.3.8
+platformdirs==4.4.0
 pluggy==1.6.0
 plumbum==1.9.0
 prometheus_client==0.22.1
@@ -114,7 +114,7 @@ pyzmq==27.0.2
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@a48dae0b5f6990cf23d46d43bfb3399f0fbc00d2#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@4b8dbff86345828ac5ab462d801f4c2429b1803b#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.5
