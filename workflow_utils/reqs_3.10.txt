@@ -97,7 +97,7 @@ Pygments==2.19.2
 pyparsing==3.2.3
 pyqtgraph==0.13.7
 PySide2==5.15.2.1
-pytest==8.4.1
+pytest==8.4.2
 pytest-qt==4.4.0
 python-dateutil==2.9.0.post0
 python-decouple==3.8
@@ -110,7 +110,7 @@ pyzmq==27.0.2
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@c6bc148601005b3c0e8a307ea1836bc38c525a13#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@61a460d01d8e70e0db5594868e39042c90712397#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.5
