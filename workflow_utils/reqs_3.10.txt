@@ -47,7 +47,7 @@ Jinja2==3.1.6
 json5==0.12.1
 jsonpointer==3.0.0
 jsonschema==4.25.1
-jsonschema-specifications==2025.4.1
+jsonschema-specifications==2025.9.1
 jupyter==1.1.1
 jupyter-console==6.6.3
 jupyter-events==0.12.0
@@ -110,7 +110,7 @@ pyzmq==27.0.2
 qtconsole==5.6.1
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@cc17f056b2dfccf5e210867ee5c1f1785c42bede#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@d1ecf3642391794ad620340337831788d14dcb68#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.5
