@@ -93,7 +93,7 @@ pipx==1.7.1
 platformdirs==4.4.0
 pluggy==1.6.0
 plumbum==1.9.0
-prometheus_client==0.22.1
+prometheus_client==0.23.1
 prompt_toolkit==3.0.52
 psutil==7.1.0
 pure_eval==0.2.3
@@ -115,7 +115,7 @@ pyzmq==27.1.0
 qtconsole==5.7.0
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@33d39d1959ec7b56072105cd4e08e6df932eb2ef#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@c003ff66db923098ec7d0aed469a2f3ebe08e39f#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.5
