@@ -17,7 +17,7 @@ click==8.1.8
 colorama==0.4.6
 comm==0.2.3
 contourpy==1.3.0
-coverage==7.10.6
+coverage==7.10.7
 cycler==0.12.1
 debugpy==1.8.17
 decorator==5.2.1
@@ -99,7 +99,7 @@ psutil==7.1.0
 pure_eval==0.2.3
 pycparser==2.23
 Pygments==2.19.2
-pyparsing==3.2.4
+pyparsing==3.2.5
 pyqtgraph==0.13.7
 PySide2==5.15.2.1
 pytest==8.4.2
@@ -115,7 +115,7 @@ pyzmq==27.1.0
 qtconsole==5.7.0
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@461e838ee3d2b2affb43b957263ba4b6f2dca8b2#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@49ae920f2e0c12a25424574cbab1298f1d5c22d5#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.5
