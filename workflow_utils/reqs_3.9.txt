@@ -10,7 +10,7 @@ attrs==25.3.0
 babel==2.17.0
 beautifulsoup4==4.14.2
 bleach==6.2.0
-certifi==2025.8.3
+certifi==2025.10.5
 cffi==2.0.0
 charset-normalizer==3.4.3
 click==8.1.8
@@ -115,7 +115,7 @@ pyzmq==27.1.0
 qtconsole==5.7.0
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@844c0643cebaf00f200ef6d3b2d70f0010449402#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@85c23d23146f8c343b2613d22f89def17d60751d#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.5
