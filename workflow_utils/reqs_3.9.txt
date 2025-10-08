@@ -6,7 +6,7 @@ arrow==1.3.0
 asteval==1.0.6
 asttokens==3.0.0
 async-lru==2.0.5
-attrs==25.3.0
+attrs==25.4.0
 babel==2.17.0
 beautifulsoup4==4.14.2
 bleach==6.2.0
@@ -106,7 +106,7 @@ pytest==8.4.2
 pytest-qt==4.4.0
 python-dateutil==2.9.0.post0
 python-decouple==3.8
-python-json-logger==3.3.0
+python-json-logger==4.0.0
 PyVISA==1.14.1
 pywin32==311
 pywinpty==3.0.2
@@ -115,7 +115,7 @@ pyzmq==27.1.0
 qtconsole==5.7.0
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@85c23d23146f8c343b2613d22f89def17d60751d#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@86e0ab4ee2f4de151d4623aa315271ec862cfd86#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.5
@@ -150,7 +150,7 @@ userpath==1.9.2
 wcwidth==0.2.14
 webcolors==24.11.1
 webencodings==0.5.1
-websocket-client==1.8.0
+websocket-client==1.9.0
 widgetsnbextension==4.0.14
 zaber_motion==7.12.0
 zipp==3.23.0
