@@ -54,7 +54,7 @@ jupyter-console==6.6.3
 jupyter-events==0.12.0
 jupyter-lsp==2.3.0
 jupyter_client==8.6.3
-jupyter_core==5.8.1
+jupyter_core==5.9.1
 jupyter_server==2.17.0
 jupyter_server_terminals==0.5.3
 jupyterlab==4.4.9
@@ -111,7 +111,7 @@ pyzmq==27.1.0
 qtconsole==5.7.0
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@dfc100a3d5283e1fa6e0a5641bcbef07121a1954#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@f1b3c818238ab17ee031c5ca09fd5de90dbff068#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.37.0
 requests==2.32.5
