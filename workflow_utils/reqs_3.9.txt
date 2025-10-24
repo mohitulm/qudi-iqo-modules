@@ -72,7 +72,7 @@ lxml==6.0.2
 markdown-it-py==3.0.0
 MarkupSafe==3.0.3
 matplotlib==3.9.4
-matplotlib-inline==0.1.7
+matplotlib-inline==0.2.1
 mdit-py-plugins==0.4.2
 mdurl==0.1.2
 mistune==3.1.4
@@ -115,7 +115,7 @@ pyzmq==27.1.0
 qtconsole==5.7.0
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@534011b629045cc73b67b8c0cc43b28fc02fae39#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@40d4061049af6973ed38c85e9573c6ae2673f4fe#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.5
