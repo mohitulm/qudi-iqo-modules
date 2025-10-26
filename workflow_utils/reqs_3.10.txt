@@ -92,7 +92,7 @@ pluggy==1.6.0
 plumbum==1.9.0
 prometheus_client==0.23.1
 prompt_toolkit==3.0.52
-psutil==7.1.1
+psutil==7.1.2
 pure_eval==0.2.3
 pycparser==2.23
 Pygments==2.19.2
@@ -112,7 +112,7 @@ pyzmq==27.1.0
 qtconsole==5.7.0
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@7f8d19067d517152bc975080c9fe1e968540669c#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@58f1c41150f1d533860d3aa1b16ddd0263a3a4c6#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.37.0
 requests==2.32.5
