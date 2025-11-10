@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "main" ]
   schedule:
-    - cron: '0 0 * * 1' 
+    - cron: '0 0 * * 1'
 
 permissions:
   contents: write
@@ -59,12 +59,12 @@ jobs:
       if: always()
       run: |
         git checkout workflow_save
- 
+
     - name: Compare status variables
       if: always()
       working-directory: workflow_utils
       run: |
-       python compare_status_vars.py 
+       python compare_status_vars.py
 
     - name: Upload status vars diff
       if: failure()
@@ -87,9 +87,9 @@ jobs:
 
     - name: Configure git
       run: |
-        git config --global user.name "astropiuu"
-        git config --global user.email "mohit.shah@uni-ulm.de"
- 
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
     - name: Pip freeze on test success and commit latest deps
       if: success()
       run: |
