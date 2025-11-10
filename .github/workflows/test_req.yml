@@ -49,7 +49,8 @@ jobs:
     strategy:
       fail-fast: false
       max-parallel: 1
-
+      matrix:
+        python-version-file: 'pyproject.toml'
    
        
     steps:
@@ -61,7 +62,7 @@ jobs:
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version-file: 'pyproject.toml'
+        python-version:  ${{ matrix.python-version }}
         cache: "pip"
         cache-dependency-path: pyproject.toml
 
