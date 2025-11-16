@@ -30,7 +30,7 @@ def parse_args() -> tuple[str, str]:
     return str(v), f"{v.major}.{v.minor}"
 
 
-def get_compatible_latest_version(package_name: str, project_python_version: str) -> str | None:
+def get_compatible_latest_version(package_name: str, project_python_version: str) -> str :
     """
     Fetches the latest compatible version of a package from PyPI,
     respecting the package's requires_python spec, if any.
