@@ -25,7 +25,7 @@ defusedxml==0.7.1
 deprecation==2.1.0
 dill==0.4.0
 entrypoints==0.4
-exceptiongroup==1.3.0
+exceptiongroup==1.3.1
 executing==2.2.1
 fastjsonschema==2.21.2
 fonttools==4.60.1
@@ -116,7 +116,7 @@ pyzmq==27.1.0
 qtconsole==5.7.0
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@f20a6c548a03c6519947f888240ee8c5cd120e8c#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@b0a8703cd3dd1918f45148717453cb076549a7e5#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.5
