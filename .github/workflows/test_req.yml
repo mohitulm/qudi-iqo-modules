@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   make-matrix:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     outputs:
       matrix: ${{ steps.build.outputs.matrix }}
     steps:
@@ -31,7 +31,7 @@ jobs:
 
   check-package-updates:
     needs: make-matrix
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     outputs:
       updates-available: ${{ steps.check-updates.outputs.updates-available }}
     strategy:
@@ -60,6 +60,7 @@ jobs:
     - name: Copy the saved frozen requirements from the last run 
       id: copy-reqs
       run: |
+        pwd
         cd qudi-iqo-modules
         git checkout workflow_save
         cp workflow_utils/reqs*.txt ../
