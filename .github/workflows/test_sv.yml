@@ -97,8 +97,8 @@ jobs:
       run: |
         python save_status_vars.py
         rm status_var_changes.txt
-        git checkout workflow_save
         cd ../../
+        git checkout workflow_save
         xcopy ../saved_status_vars workflow_utils/saved_status_vars/ /Y
         git add *
         git commit -m "updated saved sv to latest successful run"
