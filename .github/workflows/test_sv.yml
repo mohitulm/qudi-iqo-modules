@@ -58,7 +58,7 @@ jobs:
       if: always()
       run: |
         git checkout workflow_save
-        cp workflow_utils/saved_status_vars ../
+        cp -r workflow_utils/saved_status_vars ../
         git checkout main
         
     - name: Compare status variables
