@@ -14,7 +14,6 @@ def load_status_var(file_path):
     return variables
 
 def compare_status_vars(active_svs, saved_svs):
-    print(f'active_svs {active_svs}, saved_svs {saved_svs}')
     changed_svs = []
     for sv in active_svs:
         if sv not in saved_svs:

@@ -99,7 +99,7 @@ jobs:
         rm status_var_changes.txt
         git checkout workflow_save
         cd ../../
-        cp -r ../saved_status_vars workflow_utils/
+        xcopy ../saved_status_vars workflow_utils/saved_status_vars/ /Y
         git add *
         git commit -m "updated saved sv to latest successful run"
         git pull --rebase
