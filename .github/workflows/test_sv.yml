@@ -100,7 +100,7 @@ jobs:
         cd ../../
         git checkout workflow_save
         xcopy ..\saved_status_vars workflow_utils\saved_status_vars\ /Y
-        ls workflow_utils\saved_status_vars
+        python debug.py
         git add *
         git commit -m "updated saved sv to latest successful run"
         git pull --rebase
