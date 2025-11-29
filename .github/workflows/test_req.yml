@@ -4,7 +4,8 @@
 name: Testing
 
 on:
-
+  push:
+    branches: [ "main" ]
   schedule:
     - cron: '30 0 * * *'
 
@@ -131,13 +132,6 @@ jobs:
       with:
         name: pip-freeze-diff-${{ matrix.python-version }}
         path: .github/workflow_utils/pip_freeze_diff_${{ matrix.python-version }}.txt
-
-    - name: send email in case of failure
-      if: failure()
-      working-directory: .github/workflow_utils
-      run: |
-        python failure_email_req.py -p ${{ matrix.python-version }} -d pip_freeze_diff_${{ matrix.python-version }}.txt
-
 
     - name: Configure git
       run: |

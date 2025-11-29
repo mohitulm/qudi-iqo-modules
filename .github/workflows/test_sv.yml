@@ -74,18 +74,6 @@ jobs:
         name: status_vars_diff
         path: .github/workflow_utils/status_var_changes.txt
 
-    - name: send email in case of failure
-      if: failure()
-      working-directory: .github/workflow_utils
-      run: |
-        python failure_email_sv.py -f -d status_var_changes.txt
-
-    - name: send email in case of changes but successful run
-      if: success()
-      working-directory: .github/workflow_utils
-      run: |
-        python failure_email_sv.py -d status_var_changes.txt
-
     - name: Configure git
       run: |
         git config --global user.name "github-actions[bot]"
@@ -100,7 +88,6 @@ jobs:
         cd ../../
         git checkout workflow_save
         xcopy ..\saved_status_vars workflow_utils\saved_status_vars\ /Y
-        python workflow_utils/debug.py
         git add *
         git commit -m "updated saved sv to latest successful run"
         git pull --rebase
