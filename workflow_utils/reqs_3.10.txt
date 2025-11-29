@@ -1,4 +1,4 @@
-anyio==4.11.0
+anyio==4.12.0
 argon2-cffi==25.1.0
 argon2-cffi-bindings==25.1.0
 arrow==1.4.0
@@ -27,7 +27,7 @@ entrypoints==0.4
 exceptiongroup==1.3.1
 executing==2.2.1
 fastjsonschema==2.21.2
-fonttools==4.60.1
+fonttools==4.61.0
 fqdn==1.5.1
 fysom==2.1.6
 gitdb==4.0.12
@@ -112,7 +112,7 @@ pyzmq==27.1.0
 qtconsole==5.7.0
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@200e2beacd049c1a8edb19ea00c96f39a2f1b62b#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@80c4a1a14dd8f1f08ecad481db0463a137007a95#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.37.0
 requests==2.32.5
@@ -128,7 +128,6 @@ Send2Trash==1.8.3
 shiboken2==5.15.2.1
 six==1.17.0
 smmap==5.0.2
-sniffio==1.3.1
 soupsieve==2.8
 stack-data==0.6.3
 terminado==0.18.1
