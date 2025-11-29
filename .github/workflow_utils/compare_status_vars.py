@@ -1,5 +1,6 @@
-import shutil
 import os
+import shutil
+import pathlib
 from qudi.util.yaml import yaml_load, yaml_dump
 from qudi.util.paths import get_appdata_dir
 
@@ -38,6 +39,9 @@ def compare_data(output_file = 'status_var_changes.txt'):
     active_not_saved = set(active_svs_files) - set(saved_svs_files)
     saved_not_active = set(saved_svs_files) - set(active_svs_files)
     for active_svs_file in os.listdir(active_sv_dir):
+        file_extension = pathlib.Path(active_svs_file).suffix
+        if file_extension!='.cfg':
+            continue
         if not ('logic' in active_svs_file or 'hardware' in active_svs_file):
             continue
         active_svs_fp = os.path.join(active_sv_dir, active_svs_file)
