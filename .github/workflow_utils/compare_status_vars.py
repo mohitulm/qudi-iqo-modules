@@ -17,10 +17,13 @@ def load_status_var(file_path):
 def compare_status_vars(active_svs, saved_svs):
     changed_svs = []
     for sv in active_svs:
-        if sv not in saved_svs:
-            changed_svs.append([sv, {}, active_svs[sv]])
-        elif active_svs[sv] != saved_svs[sv] :
-            changed_svs.append([sv, saved_svs[sv], active_svs[sv]])
+        try:
+            if sv not in saved_svs:
+                changed_svs.append([sv, {}, active_svs[sv]])
+            elif active_svs[sv] != saved_svs[sv] :
+                changed_svs.append([sv, saved_svs[sv], active_svs[sv]])
+        except:
+            continue
     return changed_svs
 
 def compare_data(output_file = 'status_var_changes.txt'):
