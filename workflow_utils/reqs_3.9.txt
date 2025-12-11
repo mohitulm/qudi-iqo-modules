@@ -19,7 +19,7 @@ comm==0.2.3
 contourpy==1.3.0
 coverage==7.10.7
 cycler==0.12.1
-debugpy==1.8.17
+debugpy==1.8.18
 decorator==5.2.1
 defusedxml==0.7.1
 deprecation==2.1.0
@@ -81,7 +81,7 @@ nbconvert==7.16.6
 nbformat==5.10.4
 nest-asyncio==1.6.0
 nidaqmx==1.3.0
-nitypes==1.1.0.dev0
+nitypes==1.1.0.dev1
 notebook==7.5.0
 notebook_shim==0.2.4
 numpy==1.26.4
@@ -116,7 +116,7 @@ pyzmq==27.1.0
 qtconsole==5.7.0
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@f941e943dbe284745c01c0deba7d6ce7f053d82c#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@f9c4d5ef1d9072404cc359aa343ff278ccd7a942#egg=qudi_iqo_modules
 reactivex==4.0.4
 referencing==0.36.2
 requests==2.32.5
