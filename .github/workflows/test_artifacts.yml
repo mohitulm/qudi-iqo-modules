@@ -39,7 +39,6 @@ jobs:
         cache-dependency-path: pyproject.toml
 
     - name: Pip freeze
-      working-directory: .github/workflow_utils
       run: |
         pip freeze -l > pip_freeze.txt
 
