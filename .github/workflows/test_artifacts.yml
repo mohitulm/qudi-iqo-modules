@@ -40,6 +40,7 @@ jobs:
 
     - name: Pip freeze
       run: |
+        pip install numpy
         pip freeze -l > pip_freeze.txt
 
     - name: Upload pip freeze 
