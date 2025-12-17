@@ -41,7 +41,7 @@ jobs:
     - name: Pip freeze
       working-directory: .github/workflow_utils
       run: |
-        pip freeze | Out-File -Encoding UTF8 reqs.txt
+        pip freeze -l > reqs.txt
 
     - name: Upload pip freeze 
       uses: actions/upload-artifact@v4
