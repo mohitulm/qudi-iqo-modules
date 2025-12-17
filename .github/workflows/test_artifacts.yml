@@ -1,0 +1,85 @@
+# This workflow will check for updates in Python dependencies, run tests and lint with a variety of Python versions and send a warning mail if something breaks
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Testing dependencies
+
+on:
+  push:
+    branches: [ "main" ]
+  schedule:
+    - cron: '30 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group:  ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        python-version: ${{ fromJson(needs.make-matrix.outputs.matrix) }}
+   
+       
+    steps:
+    - uses: actions/checkout@v4
+      with:
+          fetch-depth: 0
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+    - name: Set up Python 
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.10
+        cache: "pip"
+        cache-dependency-path: pyproject.toml
+
+    - name: Pip freeze
+      working-directory: .github/workflow_utils
+      run: |
+        pip freeze | Out-File -Encoding UTF8 reqs.txt
+
+    - name: Upload pip freeze 
+      uses: actions/upload-artifact@v4
+      with:
+        name: pip-freeze
+        path: pip_freeze.txt
+
+
+
+    - name: Get latest pip-freeze artifact run id
+      env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}  
+      run: |
+          ARTIFACT_RUN_ID=$(
+            curl -s -H "Authorization: Bearer $GH_TOKEN" \
+                 "https://api.github.com/repos/${{ github.repository }}/actions/artifacts?per_page=50" |
+            jq '.artifacts[] | select(.name=="pip-freeze") | .workflow_run.id' |
+            head -n 1
+          )
+          echo "artifact_run_id=$ARTIFACT_RUN_ID" >> "$GITHUB_ENV"
+
+      # 2) Download previous pip-freeze if any
+    - name: Download previous pip-freeze
+      if: env.artifact_run_id != ''
+      uses: actions/download-artifact@v4
+      with:
+        name: pip-freeze
+        path: ./prev
+        run-id: ${{ env.artifact_run_id }}
+        github-token: ${{ secrets.GH_PAT }}
+
+    - name: Show diff with previous
+      if: env.artifact_run_id != ''
+      run: |
+        echo "=== Previous ==="
+        cat prev/pip-freeze.txt || true
+        echo "=== Current ==="
+        cat pip-freeze.txt
+        echo "=== Diff ==="
+        diff -u prev/pip-freeze.txt pip-freeze.txt || true
