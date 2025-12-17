@@ -79,8 +79,8 @@ jobs:
       if: env.artifact_run_id != ''
       run: |
         echo "=== Previous ==="
-        cat prev/pip-freeze.txt || true
+        cat prev/pip_freeze.txt || true
         echo "=== Current ==="
-        cat pip-freeze.txt
+        cat pip_freeze.txt
         echo "=== Diff ==="
         diff -u prev/pip-freeze.txt pip-freeze.txt || true
