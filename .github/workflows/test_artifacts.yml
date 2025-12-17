@@ -42,7 +42,7 @@ jobs:
 
     - name: Pip freeze
       run: |
-        pip install numpy
+        pip install pandas
         pip freeze -l > pip_freeze.txt
 
     - name: Upload pip freeze 
@@ -83,4 +83,4 @@ jobs:
         echo "=== Current ==="
         cat pip_freeze.txt
         echo "=== Diff ==="
-        diff -u prev/pip-freeze.txt pip-freeze.txt || true
+        diff -u prev/pip_freeze.txt pip_freeze.txt || true
