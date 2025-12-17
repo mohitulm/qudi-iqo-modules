@@ -42,14 +42,9 @@ jobs:
 
     - name: Pip freeze
       run: |
-        pip install pandas
+        pip install numpy
         pip freeze -l > pip_freeze.txt
 
-    - name: Upload pip freeze 
-      uses: actions/upload-artifact@v4
-      with:
-        name: pip-freeze
-        path: pip_freeze.txt
 
 
 
@@ -74,6 +69,14 @@ jobs:
         path: ./prev
         run-id: ${{ env.artifact_run_id }}
         github-token: ${{ secrets.GH_PAT }}
+
+
+    - name: Upload pip freeze 
+      uses: actions/upload-artifact@v4
+      with:
+        name: pip-freeze
+        path: pip_freeze.txt
+
 
     - name: Show diff with previous
       if: env.artifact_run_id != ''
