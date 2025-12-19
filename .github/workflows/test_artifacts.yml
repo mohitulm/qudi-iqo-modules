@@ -6,8 +6,6 @@ name: Testing artifacts
 on:
   push:
     branches: [ "main" ]
-  schedule:
-    - cron: '30 * * * *'
   workflow_dispatch:
 
 
@@ -45,9 +43,6 @@ jobs:
       run: |
         pip install numpy
         pip freeze -l > pip_freeze.txt
-
-
-
 
     - name: Get latest pip-freeze artifact run id
       env:
