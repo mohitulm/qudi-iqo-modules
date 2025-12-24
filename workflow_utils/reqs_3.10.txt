@@ -72,8 +72,8 @@ matplotlib==3.10.8
 matplotlib-inline==0.2.1
 mdit-py-plugins==0.5.0
 mdurl==0.1.2
-mistune==3.1.4
-nbclient==0.10.3
+mistune==3.2.0
+nbclient==0.10.4
 nbconvert==7.16.6
 nbformat==5.10.4
 nest-asyncio==1.6.0
@@ -92,11 +92,11 @@ pluggy==1.6.0
 plumbum==1.10.0
 prometheus_client==0.23.1
 prompt_toolkit==3.0.52
-psutil==7.1.3
+psutil==7.2.0
 pure_eval==0.2.3
 pycparser==2.23
 Pygments==2.19.2
-pyparsing==3.3.0
+pyparsing==3.3.1
 pyqtgraph==0.14.0
 PySide2==5.15.2.1
 pytest==9.0.2
@@ -112,7 +112,7 @@ pyzmq==27.1.0
 qtconsole==5.7.0
 QtPy==2.4.3
 -e git+https://github.com/Ulm-IQO/qudi-core.git@a074b79d2c83bcca9ffda468f082c061ba241df5#egg=qudi_core
--e git+https://github.com/mohitulm/qudi-iqo-modules@9eeecaf258bf177a81a8d681ebcab5711c288a2f#egg=qudi_iqo_modules
+-e git+https://github.com/mohitulm/qudi-iqo-modules@abe65cc68666700b21f7743648ac010a2134c191#egg=qudi_iqo_modules
 reactivex==4.1.0
 referencing==0.37.0
 requests==2.32.5
