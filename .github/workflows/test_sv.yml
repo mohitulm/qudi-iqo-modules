@@ -86,6 +86,7 @@ jobs:
 
       # 2) Download previous svs if any
     - name: Download svs artifact
+      if: ${{ needs.find_artifact_id.outputs.artifact_run_id }}  != ''
       uses: actions/download-artifact@v4
       with:
         name: svs
