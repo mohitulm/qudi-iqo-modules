@@ -85,11 +85,11 @@ jobs:
 
 
       # 2) Download previous svs if any
-    - name: Download reqs artifact
+    - name: Download svs artifact
       uses: actions/download-artifact@v4
       with:
         name: svs
-        path: .github/workflow_utils/prev
+        path: .github/workflow_utils
         run-id: ${{ needs.find_artifact_id.outputs.artifact_run_id }}
         github-token:  ${{ secrets.GITHUB_TOKEN }}
 
@@ -97,7 +97,7 @@ jobs:
       if: always()
       working-directory: .github/workflow_utils
       run: |
-       tar -x -f prev/svs.zip prev/
+       tar -x -f svs.zip 
        python compare_status_vars.py
 
     - name: Upload status vars diff
