@@ -80,7 +80,7 @@ jobs:
 
     - name: Test with pytest
       run: |
-         #pytest tests\test_reset_status_var.py
+         pytest tests\test_reset_status_var.py
 
 
       # 2) Download previous svs if any
