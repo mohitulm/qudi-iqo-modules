@@ -81,7 +81,6 @@ jobs:
     - name: Test with pytest
       run: |
          #pytest tests\test_reset_status_var.py
-         echo ${{ needs.find_artifact_id.outputs.artifact_run_id }}
 
 
       # 2) Download previous svs if any
@@ -93,12 +92,17 @@ jobs:
         path: .github/workflow_utils
         run-id: ${{ needs.find_artifact_id.outputs.artifact_run_id }}
         github-token:  ${{ secrets.GITHUB_TOKEN }}
+      
+    - name: Extract artifacts
+      if: ${{ needs.find_artifact_id.outputs.artifact_run_id }}  != ''
+      working-directory: .github/workflow_utils
+      run: |
+       tar -x -f svs.zip 
 
     - name: Compare status variables
       if: always()
       working-directory: .github/workflow_utils
-      run: |
-       tar -x -f svs.zip 
+      run: | 
        python compare_status_vars.py
 
     - name: Upload status vars diff
