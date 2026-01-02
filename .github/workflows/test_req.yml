@@ -76,7 +76,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: reqs_${{ matrix.python-version }}
-        path: ./prev
+        path: ../prev
         run-id: ${{ env.artifact_run_id }}
         github-token:  ${{ secrets.GITHUB_TOKEN }}
 
@@ -140,7 +140,7 @@ jobs:
     
       working-directory: .github/workflow_utils
       run: |
-       python compare_pip_freeze.py reqs_${{ matrix.python-version }}.txt prev/reqs_${{ matrix.python-version }}.txt pip_freeze_diff_${{ matrix.python-version }}.txt
+       python compare_pip_freeze.py reqs_${{ matrix.python-version }}.txt ../prev/reqs_${{ matrix.python-version }}.txt pip_freeze_diff_${{ matrix.python-version }}.txt
 
     - name: Upload pip freeze diff
  

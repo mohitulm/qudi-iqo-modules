@@ -69,7 +69,7 @@ def main() -> int:
     full_py, minor_py = parse_args()
     constrained = get_constrained_dependencies()
 
-    reqs_path = f"prev/reqs_{minor_py}.txt"
+    reqs_path = f"../prev/reqs_{minor_py}.txt"
     if not os.path.exists(reqs_path):
         updates_available = True
 
