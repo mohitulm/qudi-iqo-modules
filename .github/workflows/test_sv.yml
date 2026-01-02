@@ -22,9 +22,6 @@ jobs:
     outputs:
       updates-available: ${{ steps.check-updates.outputs.updates-available }}
       artifact_run_id: ${{ steps.find-id.outputs.artifact_run_id }}
-    strategy:
-      matrix:
-        python-version: ${{ fromJson(needs.make-matrix.outputs.matrix) }}
     steps:
     - uses: actions/checkout@v4
       with:
