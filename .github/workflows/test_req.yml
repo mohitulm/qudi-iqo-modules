@@ -140,7 +140,6 @@ jobs:
       
       # 2) Download previous pip-freeze if any
     - name: Download reqs artifact
-      if: env.artifact_run_id != ''
       uses: actions/download-artifact@v4
       with:
         name: reqs_${{ matrix.python-version }}
