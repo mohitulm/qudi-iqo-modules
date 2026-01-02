@@ -4,8 +4,6 @@
 name: Testing artifacts
 
 on:
-  push:
-    branches: [ "main" ]
   workflow_dispatch:
 
 
