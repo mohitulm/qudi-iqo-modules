@@ -31,7 +31,7 @@ jobs:
 
   check-package-updates:
     needs: make-matrix
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     outputs:
       updates-available: ${{ steps.check-updates.outputs.updates-available }}
     strategy:
