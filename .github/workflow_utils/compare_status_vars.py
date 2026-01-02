@@ -4,7 +4,7 @@ import pathlib
 from qudi.util.yaml import yaml_load, yaml_dump
 from qudi.util.paths import get_appdata_dir
 
-SAVED_DIR = '../../../saved_status_vars'
+SAVED_DIR = 'prev/saved_status_vars'
 
 def load_status_var(file_path):    
     try:
