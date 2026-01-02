@@ -129,6 +129,7 @@ jobs:
       run: |
         pytest -s
 
+    
 
     - name: Pip freeze
       working-directory: .github/workflow_utils
@@ -140,7 +141,9 @@ jobs:
     
       working-directory: .github/workflow_utils
       run: |
-       python compare_pip_freeze.py reqs_${{ matrix.python-version }}.txt ../prev/reqs_${{ matrix.python-version }}.txt pip_freeze_diff_${{ matrix.python-version }}.txt
+       mkdir prev
+       cp ../../../prev/* prev/
+       python compare_pip_freeze.py reqs_${{ matrix.python-version }}.txt prev/reqs_${{ matrix.python-version }}.txt pip_freeze_diff_${{ matrix.python-version }}.txt
 
     - name: Upload pip freeze diff
  
