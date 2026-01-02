@@ -34,6 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       updates-available: ${{ steps.check-updates.outputs.updates-available }}
+      artifact_run_id: ${{ steps.find-id.outputs.artifact_run_id }}
     strategy:
       matrix:
         python-version: ${{ fromJson(needs.make-matrix.outputs.matrix) }}
@@ -59,6 +60,7 @@ jobs:
 
 
     - name: Get latest artifact run id
+      id: find-id
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -69,6 +71,7 @@ jobs:
             head -n 1
           )
           echo "artifact_run_id=$ARTIFACT_RUN_ID" >> "$GITHUB_ENV"
+          echo "artifact_run_id=$ARTIFACT_RUN_ID" >> "$GITHUB_OUTPUT"
 
       # 2) Download previous pip-freeze if any
     - name: Download reqs artifact
@@ -76,7 +79,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: reqs_${{ matrix.python-version }}
-        path: ../prev
+        path: .github/workflow_utils
         run-id: ${{ env.artifact_run_id }}
         github-token:  ${{ secrets.GITHUB_TOKEN }}
 
@@ -129,19 +132,27 @@ jobs:
       run: |
         pytest -s
 
-    
 
     - name: Pip freeze
       working-directory: .github/workflow_utils
       run: |
         pip freeze | Out-File -Encoding UTF8 reqs_${{ matrix.python-version }}.txt
       
+      # 2) Download previous pip-freeze if any
+    - name: Download reqs artifact
+      if: env.artifact_run_id != ''
+      uses: actions/download-artifact@v4
+      with:
+        name: reqs_${{ matrix.python-version }}
+        path: .github/workflow_utils/prev
+        run-id:  ${{ needs.check-package-updates.outputs.artifact_run_id }}
+        github-token:  ${{ secrets.GITHUB_TOKEN }}
 
     - name: Compare pip freeze outputs
-    
+
       working-directory: .github/workflow_utils
       run: |
-       python compare_pip_freeze.py reqs_${{ matrix.python-version }}.txt ../../../prev/reqs_${{ matrix.python-version }}.txt pip_freeze_diff_${{ matrix.python-version }}.txt
+       python compare_pip_freeze.py reqs_${{ matrix.python-version }}.txt prev/reqs_${{ matrix.python-version }}.txt pip_freeze_diff_${{ matrix.python-version }}.txt
 
     - name: Upload pip freeze diff
  

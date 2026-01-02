@@ -17,6 +17,9 @@ def compare_pip_freeze(current_file, previous_file, output_file):
     """"Compares two pip freeze outputs and writes the differences to an output file."""
     current = read_requirements(current_file)
     previous = read_requirements(previous_file)
+    print(f'current : \n {current} \n-------\n')
+    print(f'previous : \n {previous} \n-------\n')
+
     added = current.keys() - previous.keys()
     removed = previous.keys() - current.keys()
     modified = {pkg: (previous[pkg], current[pkg]) for pkg in current.keys() & previous.keys() if current[pkg] != previous[pkg]}
