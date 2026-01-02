@@ -81,6 +81,7 @@ jobs:
     - name: Test with pytest
       run: |
          pytest tests\test_reset_status_var.py
+         echo "Run id is ${{ needs.find_artifact_id.outputs.artifact_run_id }}"
 
 
       # 2) Download previous svs if any
