@@ -20,7 +20,6 @@ jobs:
   find_artifact_id:
     runs-on: ubuntu-latest
     outputs:
-      updates-available: ${{ steps.check-updates.outputs.updates-available }}
       artifact_run_id: ${{ steps.find-id.outputs.artifact_run_id }}
     steps:
     - uses: actions/checkout@v4
@@ -38,7 +37,7 @@ jobs:
           ARTIFACT_RUN_ID=$(
             curl -s -H "Authorization: Bearer $GH_TOKEN" \
                  "https://api.github.com/repos/${{ github.repository }}/actions/artifacts?per_page=50" |
-            jq '.artifacts[] | select(.name=="reqs_${{ matrix.python-version }}") | .workflow_run.id' |
+            jq '.artifacts[] | select(.name=="svs") | .workflow_run.id' |
             head -n 1
           )
           echo "artifact_run_id=$ARTIFACT_RUN_ID" >> "$GITHUB_ENV"
@@ -116,7 +115,7 @@ jobs:
  
 
 
-    - name: Pip freeze on test success and commit latest deps
+    - name:  save latest svs
       if: success()
       working-directory: .github/workflow_utils
       run: |
