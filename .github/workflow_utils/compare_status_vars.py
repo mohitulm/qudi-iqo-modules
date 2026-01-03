@@ -54,13 +54,14 @@ def compare_data(output_file = 'status_var_changes.txt'):
 
             saved_svs_fp = os.path.join(SAVED_DIR, active_svs_file)
             saved_svs = load_status_var(saved_svs_fp)
-            #print(f'file {active_svs_file}, active {active_svs}, saved {saved_svs}' )
+            print(f'file {active_svs_file}, active {active_svs}, saved {saved_svs}' )
             changes = compare_status_vars(active_svs, saved_svs)
             if changes:
                 errors[active_svs_file] = changes
         
     with open(output_file, 'w') as file:
         if not errors:
+            print("No differences found.\n")
             file.write("No differences found.\n")
         elif errors == 'First run':
             file.write("First save.\n")

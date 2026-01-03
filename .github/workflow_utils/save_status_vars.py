@@ -4,7 +4,8 @@ import pathlib
 from qudi.util.paths import get_appdata_dir
 
 SAVED_STATUS_VAR_DIR = 'saved_status_vars'
-os.mkdir(SAVED_STATUS_VAR_DIR)
+if not os.path.isdir(SAVED_STATUS_VAR_DIR) :
+    os.mkdir(SAVED_STATUS_VAR_DIR)
 ACTIVE_STATUS_VAR_DIR = get_appdata_dir()
 SV_STATUS_FILE = 'status_var_changes.txt'
 
