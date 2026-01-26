@@ -4,9 +4,12 @@
 name: Testing dependencies
 
 on:
-
+  push:
+    branches: [ "main" ]
   schedule:
     - cron: '30 0 * * *'
+  workflow_dispatch:
+
 
 permissions:
   contents: write
@@ -72,7 +75,6 @@ jobs:
           echo "artifact_run_id=$ARTIFACT_RUN_ID" >> "$GITHUB_ENV"
           echo "artifact_run_id=$ARTIFACT_RUN_ID" >> "$GITHUB_OUTPUT"
 
-      # 2) Download previous pip-freeze if any
     - name: Download reqs artifact
       if: env.artifact_run_id != ''
       uses: actions/download-artifact@v4
@@ -137,9 +139,8 @@ jobs:
       run: |
         pip freeze | Out-File -Encoding UTF8 reqs_${{ matrix.python-version }}.txt
       
-      # 2) Download previous pip-freeze if any
     - name: Download reqs artifact
-      if: ${{ needs.check-package-updates.outputs.artifact_run_id }}  != ''
+      if: needs.check-package-updates.outputs.artifact_run_id != ''
       uses: actions/download-artifact@v4
       with:
         name: reqs_${{ matrix.python-version }}

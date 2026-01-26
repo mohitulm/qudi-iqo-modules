@@ -7,7 +7,9 @@ on:
   push:
     branches: [ "main" ]
   schedule:
-    - cron: '10 * * * *'
+    - cron: '10 * * * 1'
+  workflow_dispatch:
+
 
 permissions:
   contents: write
@@ -80,10 +82,8 @@ jobs:
     - name: Test with pytest
       run: |
          pytest tests\test_reset_status_var.py
-         echo "Run id is ${{ needs.find_artifact_id.outputs.artifact_run_id }}"
 
 
-      # 2) Download previous svs if any
     - name: Download svs artifact
       if:  needs.find_artifact_id.outputs.artifact_run_id  != ''
       uses: actions/download-artifact@v4
@@ -112,16 +112,12 @@ jobs:
         name: status_vars_diff
         path: .github/workflow_utils/status_var_changes.txt
 
- 
-
-
     - name:  save latest svs
       if: success()
       working-directory: .github/workflow_utils
       run: |
         python save_status_vars.py
         tar -a -c -f svs.zip saved_status_vars
-
 
     - name: Upload svs artifact
       if: success()

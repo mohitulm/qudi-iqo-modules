@@ -95,7 +95,7 @@ def main() -> int:
 
 
 
-    # Expose decision to later jobs (don’t crash if not on GHA)
+    # Expose decision to later jobs
     gha_out = os.environ.get("GITHUB_OUTPUT")
     if gha_out:
         with open(gha_out, "a", encoding="utf-8") as f:
