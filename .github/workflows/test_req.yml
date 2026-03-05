@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "main" ]
   schedule:
-    - cron: '30 0 * * *'
+    - cron: '30 * * * *'
   workflow_dispatch:
 
 
@@ -89,6 +89,7 @@ jobs:
       working-directory: .github/workflow_utils
       run: |
         python check_updates.py -v ${{ matrix.python-version }}
+
   test:
     needs: [make-matrix, check-package-updates]
     if: ${{ needs.check-package-updates.outputs.updates-available == 'true' }}
@@ -116,7 +117,7 @@ jobs:
     - name: Checkout qudi core
       run: |
         cd ..
-        git clone https://github.com/mohitulm/qudi-core.git
+        git clone https://github.com/Ulm-IQO/qudi-core.git
         cd qudi-core
         python -m pip install --upgrade pip
         pip install -e .
@@ -136,14 +137,29 @@ jobs:
       working-directory: .github/workflow_utils
       run: |
         pip freeze | Out-File -Encoding UTF8 reqs_${{ matrix.python-version }}.txt
+
+    - name: Get latest artifact run id
+      id: find-id
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+          ARTIFACT_RUN_ID=$(
+            curl -s -H "Authorization: Bearer $GH_TOKEN" \
+                 "https://api.github.com/repos/${{ github.repository }}/actions/artifacts?per_page=50" |
+            jq '.artifacts[] | select(.name=="reqs_${{ matrix.python-version }}") | .workflow_run.id' |
+            head -n 1
+          )
+          echo "artifact_run_id=$ARTIFACT_RUN_ID" >> "$GITHUB_ENV"
+
     - name: Download reqs artifact
-      if: needs.check-package-updates.outputs.artifact_run_id != ''
+      if: env.artifact_run_id != ''
       uses: actions/download-artifact@v4
       with:
         name: reqs_${{ matrix.python-version }}
         path: .github/workflow_utils/prev
-        run-id:  ${{ needs.check-package-updates.outputs.artifact_run_id }}
+        run-id: ${{ env.artifact_run_id }}
         github-token:  ${{ secrets.GITHUB_TOKEN }}
+
 
     - name: Compare pip freeze outputs
       if: failure()
