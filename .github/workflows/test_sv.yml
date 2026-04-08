@@ -22,7 +22,7 @@ jobs:
     outputs:
       artifact_run_id: ${{ steps.find-id.outputs.artifact_run_id }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
           fetch-depth: 0
           ref: ${{github.event.pull_request.head.ref}}
@@ -51,13 +51,13 @@ jobs:
 
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
           fetch-depth: 0
           ref: ${{github.event.pull_request.head.ref}}
           repository: ${{github.event.pull_request.head.repo.full_name}}
     - name: Set up Python 
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version-file: 'pyproject.toml'
         cache: "pip"
@@ -84,7 +84,7 @@ jobs:
 
     - name: Download svs artifact
       if:  needs.find_artifact_id.outputs.artifact_run_id  != ''
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: svs
         path: .github/workflow_utils
@@ -105,7 +105,7 @@ jobs:
 
     - name: Upload status vars diff
       if: failure()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: status_vars_diff
         path: .github/workflow_utils/status_var_changes.txt
@@ -119,7 +119,7 @@ jobs:
 
     - name: Upload svs artifact
       if: success()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: svs
         path: .github/workflow_utils/svs.zip
