@@ -4,8 +4,7 @@
 name: Testing Dependencies
 
 on:
-  push:
-    branches: [ "main" ]
+
   schedule:
     - cron: '30 * * * *'
   workflow_dispatch:
