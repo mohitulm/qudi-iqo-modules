@@ -17,8 +17,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  if: ${{ github.event.pull_request.draft == false }}
   make-matrix:
+    if: ${{ github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.build.outputs.matrix }}
